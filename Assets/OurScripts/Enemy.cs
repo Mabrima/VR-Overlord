@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int hits = 0;
     [SerializeField]
+    float speed = 0.05f;
+    [SerializeField]
     TextMesh counter;
 
     Animator animator;
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(Vector3.forward * speed);
     }
 
     public void TakeDamage()
