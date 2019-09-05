@@ -111,6 +111,10 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.minScalar
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1108256732129644, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198000013313792356, guid: acf39d9f4addf294d93fa56fa373961b,
         type: 3}
       propertyPath: LightsModule.rangeCurve.scalar

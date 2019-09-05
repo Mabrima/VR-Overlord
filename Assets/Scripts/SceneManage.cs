@@ -9,8 +9,7 @@ public class SceneManage : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        MenuScene();
+    { 
     }
 
 
@@ -21,7 +20,7 @@ public class SceneManage : MonoBehaviour
 
     public void Game()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("World Robin");
     }
 
     public void Quit()
