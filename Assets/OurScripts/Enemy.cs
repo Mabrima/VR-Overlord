@@ -28,14 +28,14 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.forward * speed);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
         if (counter != null)
         {
             hits++;
             counter.text = "" + hits;
         }
-        health--;
+        health -= damage;
         if (health <= 0)
         {
             StartCoroutine(Dying());

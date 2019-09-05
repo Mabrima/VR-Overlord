@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-
+    [SerializeField]
     int health = 1;
+    [SerializeField]
+    int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class Throwable : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<Enemy>().TakeDamage();
+            other.GetComponent<Enemy>().TakeDamage(damage);
             health--;
             if (health <= 0)
             {
