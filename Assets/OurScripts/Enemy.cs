@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int hits = 0;
     [SerializeField]
-    float speed = 0.05f;
+    float speed = 0.0001f;
     [SerializeField]
     TextMesh counter;
 
@@ -30,8 +30,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage()
     {
-        hits++;
-        counter.text = "" + hits;
+        if (counter != null)
+        {
+            hits++;
+            counter.text = "" + hits;
+        }
         health--;
         if (health <= 0)
         {
@@ -47,7 +50,7 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Death", true);
         yield return new WaitForSeconds(2);
-        Destroy(transform);
+        Destroy(gameObject);
         yield return null;
     }
 }

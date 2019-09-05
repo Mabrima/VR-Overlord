@@ -5,7 +5,7 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
 
-    int health = 3;
+    int health = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class Throwable : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                Destroy(transform);
+                Destroy(gameObject);
             }
         }
     }
