@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
         currentWave -= 1;
         //-1 on length because we are starting on index 0.
         totalWaves = waves.Length - 1;
-        StartNextWave();
+        StartNextWave(); //Now the spawnmanager starts the spawning. Call this function in GameManager when ready.
     }
 
     void StartNextWave()
@@ -77,12 +77,13 @@ public class SpawnManager : MonoBehaviour
             Instantiate(enemy, spawnPoint.position, Quaternion.identity);
 
             yield return new WaitForSeconds(timeBetweenEnemies);
+            Debug.Log("Spawned enemy");
         }
         yield return null;
 
     }
 
-    public void EnemiesDefeated() //If we have multiple waves.  --  Call this whenever and enemy dies.
+    public void EnemiesDefeated() //If we have multiple waves.  --  Call this whenever an enemy dies.
     {
         enemiesInWaveLeft--;
 

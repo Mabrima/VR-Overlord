@@ -35,13 +35,17 @@ public class GameManager : MonoBehaviour
 
     void WonGame() //Call whenever we have won. 
     {
-
+        //Show win-screen
+        //Show score
+        //Go back to menu
 
     }
 
     void LostGame() //Call whenever we have lost. 
     {
-
+        //Show lose screen
+        //Show score?
+        //Go back to menu? 
 
     }
 }
