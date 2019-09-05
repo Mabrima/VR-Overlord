@@ -12,6 +12,10 @@ public class Wave
 
 public class SpawnManager : MonoBehaviour
 {
+    /* Script Author: 
+     * Edits by: 
+     */
+
     #region Public variables
     public Wave[] waves;
     public Transform spawnPoint;

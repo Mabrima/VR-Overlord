@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    /* Script Author: 
+     * Edits by: 
+     */
+
     public static GameManager instance = null;
 
     void Awake()
