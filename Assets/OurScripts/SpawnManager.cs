@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+    /* Script Author: 
+     * Edits by: 
+     */
+
 [System.Serializable]
 public class Wave
 {
@@ -12,9 +16,6 @@ public class Wave
 
 public class SpawnManager : MonoBehaviour
 {
-    /* Script Author: 
-     * Edits by: 
-     */
 
     #region Public variables
     public Wave[] waves;

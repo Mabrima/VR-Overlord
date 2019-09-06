@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    /* Script Author: 
+     * Edits by: Johan Appelgren
+     */
+
     [SerializeField]
     int health = 3;
     [SerializeField]
@@ -15,17 +20,23 @@ public class Enemy : MonoBehaviour
 
     Animator animator;
 
+    NavMeshAgent agent;
+    GameObject box;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        box = GameObject.FindGameObjectWithTag("Player");
+
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * speed);
+        agent.SetDestination(box.transform.position);
     }
 
     public void TakeDamage(int damage)
