@@ -63,3 +63,4 @@ crashlytics-build.properties
 
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/EditorBuildSettings.asset
+ProjectSettings/ProBuilderSettings.json
