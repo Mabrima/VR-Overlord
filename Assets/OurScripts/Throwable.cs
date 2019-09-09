@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script Author: Robin
+
 public class Throwable : MonoBehaviour
 {
     [SerializeField]

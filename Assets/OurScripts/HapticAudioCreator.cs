@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script Author: Robin
+
 public class HapticAudioCreator : MonoBehaviour
 {
     public static HapticAudioCreator singleton;
