@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using OVR.OpenVR;
 
+// Script Author: Robin
+
 public class RockSpawner : MonoBehaviour
 {
 
@@ -10,25 +12,38 @@ public class RockSpawner : MonoBehaviour
     GameObject rock;
     [SerializeField]
     float timeBetweenRocks = 2;
+    [SerializeField]
+    int initialSpawn = 3;
 
-    float timeSinceLastRock = 0;
+    bool spawning = true;
 
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(SpawnRocks());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SpawnRocks()
     {
-        timeSinceLastRock += Time.deltaTime;
-
-        if (timeSinceLastRock / timeBetweenRocks > 1)
+        bool initialSpawning = true;
+        int spawned = 0;
+        while (initialSpawning)
         {
-            timeSinceLastRock = 0;
             Instantiate(rock, transform.position, transform.rotation, transform);
+            spawned++;
+            if (spawned >= initialSpawn)
+            {
+                initialSpawning = false;
+            }
+            yield return new WaitForSeconds(1);
         }
+        
+        while (spawning)
+        {
+            Instantiate(rock, transform.position, transform.rotation, transform);
+            yield return new WaitForSeconds(timeBetweenRocks);
+        }
+
+        yield return null;
     }
 }

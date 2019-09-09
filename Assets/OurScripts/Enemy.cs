@@ -10,16 +10,12 @@ public class Enemy : MonoBehaviour
      */
 
     [SerializeField]
-    int health = 3;
-    [SerializeField]
     int hits = 0;
     [SerializeField]
-    float speed = 0.0001f;
-    [SerializeField]
-    TextMesh counter;
+    float speed = 0.1f;
 
     Animator animator;
-
+    UnitHealth unitHealth;
     NavMeshAgent agent;
     GameObject box;
 
@@ -29,7 +25,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         box = GameObject.FindGameObjectWithTag("Player");
-
+        unitHealth = GetComponent<UnitHealth>();
         animator = GetComponent<Animator>();
     }
 
@@ -40,22 +36,12 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(box.transform.position);
     }
 
-    public void TakeDamage(int damage)
+    public void TakingDamage()
     {
-        if (counter != null)
-        {
-            hits++;
-            counter.text = "" + hits;
-        }
-        health -= damage;
-        if (health <= 0)
-        {
+        if (unitHealth.health <= 0)
             StartCoroutine(Dying());
-        }
         else
-        {
             animator.SetTrigger("Hit");
-        }
     }
 
     IEnumerator Dying()
