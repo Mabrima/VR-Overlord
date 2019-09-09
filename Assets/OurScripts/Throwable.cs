@@ -15,8 +15,12 @@ public class Throwable : MonoBehaviour
     {
         other.GetComponent<UnitHealth>()?.TakeDamage(damage);
 
-        health--;
-        if (health <= 0)
-            Destroy(gameObject);
+        if (other.CompareTag("Enemy"))
+        {
+            health--;
+            if (health <= 0)
+                Destroy(gameObject);
+        }
+        
     }
 }
