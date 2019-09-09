@@ -30,7 +30,7 @@ public class FireBall : MonoBehaviour
         }
         else
         {
-            other.GetComponent<UnitHealth>().TakeDamage(damage);
+            other.GetComponent<UnitHealth>()?.TakeDamage(damage);
         }
 
     }

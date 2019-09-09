@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         agent.speed = speed;
-        agent.SetDestination(box.transform.position);
+        if (box != null)
+            agent.SetDestination(box.transform.position);
     }
 
     public void TakingDamage()
