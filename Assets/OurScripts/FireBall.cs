@@ -30,11 +30,9 @@ public class FireBall : MonoBehaviour
         }
         else
         {
-            if (other.tag == "Enemy")
-            {
-                other.GetComponent<Enemy>().TakeDamage(damage);
-            }
+            other.GetComponent<UnitHealth>().TakeDamage(damage);
         }
+
     }
 
     private IEnumerator Explode()

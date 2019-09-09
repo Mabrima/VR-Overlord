@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class UnitHealth : MonoBehaviour
 {
-    [SerializeField] int health = 1;
+    /* Script Author: Johan Appelgren
+     * Edits by:
+     */
+
+    [SerializeField] public int health;
 
     public void TakeDamage(int damage)
     {
         health -= damage;
         health = health <= 0 ? 0 : health - damage;
+
+        GetComponent<Enemy>()?.TakingDamage();
     }
 }
