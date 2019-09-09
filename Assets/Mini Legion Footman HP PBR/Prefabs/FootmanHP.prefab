@@ -928,7 +928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   hits: 0
-  speed: 0.0001
+  speed: 0.1
   counter: {fileID: 0}
 --- !u!195 &-178977660043485240
 NavMeshAgent:

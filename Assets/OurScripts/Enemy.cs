@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        agent.speed = speed;
         agent.SetDestination(box.transform.position);
     }
 
