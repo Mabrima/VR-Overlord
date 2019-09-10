@@ -212,8 +212,7 @@ public class OVRGrabber : MonoBehaviour
 		OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;
 
-        //HapticAudioCreator.singleton.CreateHapticAudio(90, 1, 100); Makes Grabbable not work.
-        //HapticAudioCreator.singleton.TriggerVibration(90, 1, 100, GetComponent<OVRGrabbable>().grabbedBy.m_controller);
+        CreateVibration.singleton.CallVibration(0.2f, true, true);
 
         // Iterate grab candidates and find the closest grabbable candidate
         foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
