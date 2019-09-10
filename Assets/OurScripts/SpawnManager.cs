@@ -80,6 +80,7 @@ public class SpawnManager : MonoBehaviour
             //Instantiate enemy
             GameObject enemy = waves[currentWave].enemyPrefab;
             Instantiate(enemy, spawnPoint.position, Quaternion.identity);
+            CreateVibration.singleton.CallVibration(0.2f); //Call this function when you want to create a vibration.
 
             yield return new WaitForSeconds(timeBetweenEnemies);
             Debug.Log("Spawned enemy");
