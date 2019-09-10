@@ -927,10 +927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1504c0875a8b3d4f93b8885a7c05072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   hits: 0
   speed: 0.1
-  counter: {fileID: 0}
 --- !u!195 &-178977660043485240
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -962,7 +960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4032a51e2f5d2144eb03abe43e9226e7, type: 3}
+  m_Script: {fileID: 11500000, guid: cac049e461a015647b24eef409dbf1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
