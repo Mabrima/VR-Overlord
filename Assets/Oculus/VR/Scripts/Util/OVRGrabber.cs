@@ -212,8 +212,11 @@ public class OVRGrabber : MonoBehaviour
 		OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;
 
+        //HapticAudioCreator.singleton.CreateHapticAudio(90, 1, 100); Makes Grabbable not work.
+        HapticAudioCreator.singleton.TriggerVibration(90, 1, 100, GetComponent<OVRGrabbable>().grabbedBy.m_controller);
+
         // Iterate grab candidates and find the closest grabbable candidate
-		foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
+        foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
         {
             bool canGrab = !(grabbable.isGrabbed && !grabbable.allowOffhandGrab);
             if (!canGrab)
@@ -234,6 +237,8 @@ public class OVRGrabber : MonoBehaviour
                     closestGrabbableCollider = grabbableCollider;
                 }
             }
+
+            //HapticAudioCreator.singleton.CreateHapticAudio(90, 1, 100); Makes Grabbable not work.
         }
 
         // Disable grab volumes to prevent overlaps
@@ -294,6 +299,7 @@ public class OVRGrabber : MonoBehaviour
             }
         }
     }
+
 
     protected virtual void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
     {

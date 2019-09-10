@@ -42,4 +42,28 @@ public class HapticAudioCreator : MonoBehaviour
 
         return clip;
     }
+
+
+    public void TriggerVibration(int iteration, int frequency, int strength, OVRInput.Controller controller)
+    {
+        OVRHapticsClip clip = new OVRHapticsClip();
+
+        for (int i = 0; i < iteration; i++)
+        {
+            clip.WriteSample(i % frequency == 0 ? (byte)strength : (byte)0);
+        }
+
+        if (controller == OVRInput.Controller.LTouch)
+        {
+            //Trigger left controller
+            OVRHaptics.LeftChannel.Preempt(clip);
+        }
+
+        else if (controller == OVRInput.Controller.RTouch)
+        {
+            //Trigger right controller
+            OVRHaptics.RightChannel.Preempt(clip);
+        }
+
+    }
 }
