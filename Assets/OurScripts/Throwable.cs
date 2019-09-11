@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script Author: Robin
+/* Script Author: Robin Arkblad 
+ * Edits by:
+ */
 
 public class Throwable : MonoBehaviour
 {
@@ -21,6 +23,6 @@ public class Throwable : MonoBehaviour
             if (health <= 0)
                 Destroy(gameObject);
         }
-        
+
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-    /* Script Author: 
-     * Edits by: 
-     */
+/* Script Author: Kian Parsa
+ * Edits by: 
+ */
 
 [System.Serializable]
 public class Wave
@@ -73,7 +73,7 @@ public class SpawnManager : MonoBehaviour
         //Spawn enemies while amount of enemies are under predetermined enemy amount.
         while (spawnedEnemies < totalEnemiesInCurrentWave)
         {
-            
+
             spawnedEnemies++;
             enemiesInWaveLeft++;
 
@@ -83,7 +83,6 @@ public class SpawnManager : MonoBehaviour
             //CreateVibration.singleton.CallVibration(0.2f, true, true); //Call this function when you want to create a vibration.
 
             yield return new WaitForSeconds(timeBetweenEnemies);
-            Debug.Log("Spawned enemy");
         }
         yield return null;
 
@@ -95,7 +94,7 @@ public class SpawnManager : MonoBehaviour
 
         if (enemiesInWaveLeft == 0 && spawnedEnemies == totalEnemiesInCurrentWave)
         {
-            
+
             StartNextWave();
         }
 

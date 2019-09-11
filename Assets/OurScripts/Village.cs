@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Script Author: Johan Appelgren
+ * Edits by:
+ */
+
 public class Village : MonoBehaviour
 {
+
     UnitHealth health;
 
     private void Start()

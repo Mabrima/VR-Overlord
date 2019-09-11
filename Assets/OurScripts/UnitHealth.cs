@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Script Author: Johan Appelgren
+ * Edits by:
+ */
+
 public class UnitHealth : MonoBehaviour
 {
-    /* Script Author: Johan Appelgren
-     * Edits by:
-     */
 
     [SerializeField] public int health;
 

@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/* Script Author: 
+ * Edits by: 
+ */
+
 public class SceneManage : MonoBehaviour
 {
-    /* Script Author: 
-     * Edits by: 
-     */
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
     }
 
 

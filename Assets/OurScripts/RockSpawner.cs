@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using OVR.OpenVR;
 
-// Script Author: Robin
+/* Script Author: Robin Arkblad
+ * Edits by:
+ */
 
 public class RockSpawner : MonoBehaviour
 {
@@ -37,7 +39,7 @@ public class RockSpawner : MonoBehaviour
             }
             yield return new WaitForSeconds(1);
         }
-        
+
         while (spawning)
         {
             Instantiate(rock, transform.position, transform.rotation, transform);

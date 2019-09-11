@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/* Script Author: Robin Arkblad
+ * Edits by: Johan Appelgren
+ */
+
 public class Enemy : MonoBehaviour
 {
-    /* Script Author: 
-     * Edits by: Johan Appelgren
-     */
 
     [SerializeField]
     float speed = 0.1f;

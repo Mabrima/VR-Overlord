@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Script Author: Robin Arkblad
+ * Edits by:
+ */
+
 public class BallKiller : MonoBehaviour
 {
     // Start is called before the first frame update
