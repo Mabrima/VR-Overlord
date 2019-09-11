@@ -3588,8 +3588,11 @@ GameObject:
   - component: {fileID: 605609930}
   - component: {fileID: 605609929}
   - component: {fileID: 605609928}
+  - component: {fileID: 605609933}
+  - component: {fileID: 605609932}
+  - component: {fileID: 605609934}
   m_Layer: 0
-  m_Name: City
+  m_Name: Village
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3661,13 +3664,51 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605609927}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8633, y: 0.027, z: 0.2193}
-  m_LocalScale: {x: 0.5, y: 0.1, z: 0.2}
+  m_LocalRotation: {x: -0, y: 0.045402523, z: -0, w: 0.99896884}
+  m_LocalPosition: {x: 2.3228, y: 0.027, z: 1.6028}
+  m_LocalScale: {x: 0.3, y: 0.1, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 5.2050004, z: 0}
+--- !u!114 &605609932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605609927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac049e461a015647b24eef409dbf1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+--- !u!65 &605609933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605609927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &605609934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605609927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6c721e2ca3579488c606db61caa927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &660549288
 PrefabInstance:
   m_ObjectHideFlags: 0
