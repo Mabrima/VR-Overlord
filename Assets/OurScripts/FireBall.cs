@@ -11,7 +11,7 @@ public class FireBall : MonoBehaviour
     [SerializeField]
     SphereCollider explosionRadious;
     [SerializeField]
-    Transform explosionEffect;
+    GameObject explosionEffect;
     [SerializeField]
     GameObject navMeshObstacle;
 
@@ -44,14 +44,19 @@ public class FireBall : MonoBehaviour
         exploding = true;
         explosionRadious.enabled = true;
         explosionRadious.enabled = false;
-        GetComponent<ParticleSystem>().Stop();
-        Instantiate(navMeshObstacle, transform.position, transform.rotation, transform.parent);
-        explosionEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        GameObject tempNMO = Instantiate(navMeshObstacle, transform.position, Quaternion.identity);
+        GameObject tempExplosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(1);
-        explosionEffect.gameObject.SetActive(false);
-        yield return new WaitForSeconds(4);
-        Destroy(colliderSphere.gameObject);
+        Destroy(tempExplosion);
+        //Create burn effect
+        yield return new WaitForSeconds(19);
+        //Destroy burn effect
+        Destroy(tempNMO);
+        Destroy(transform.parent.gameObject);
         yield return null;
     }
+
+
 
 }
