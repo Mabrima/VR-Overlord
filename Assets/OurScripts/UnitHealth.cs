@@ -14,7 +14,7 @@ public class UnitHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        health = health <= 0 ? 0 : health - damage;
+        health = health <= 0 ? 0 : health;
 
         GetComponent<Enemy>()?.TakingDamage();
     }

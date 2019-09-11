@@ -3587,7 +3587,6 @@ GameObject:
   - component: {fileID: 605609931}
   - component: {fileID: 605609930}
   - component: {fileID: 605609929}
-  - component: {fileID: 605609928}
   - component: {fileID: 605609933}
   - component: {fileID: 605609932}
   - component: {fileID: 605609934}
@@ -3598,19 +3597,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &605609928
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605609927}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &605609929
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3665,7 +3651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605609927}
   m_LocalRotation: {x: -0, y: 0.045402523, z: -0, w: 0.99896884}
-  m_LocalPosition: {x: 2.3228, y: 0.027, z: 1.6028}
+  m_LocalPosition: {x: 2.3163, y: 0.027, z: 1.6201}
   m_LocalScale: {x: 0.3, y: 0.1, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8401,7 +8387,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1349348738
 PrefabInstance:
@@ -12082,7 +12068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
