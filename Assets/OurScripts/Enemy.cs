@@ -10,8 +10,6 @@ public class Enemy : MonoBehaviour
      */
 
     [SerializeField]
-    int hits = 0;
-    [SerializeField]
     float speed = 0.1f;
 
     Animator animator;
