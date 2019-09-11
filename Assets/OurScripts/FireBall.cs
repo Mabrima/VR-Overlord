@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script Author: Robin
+// Script Author: Robin Arkblad
 
 public class FireBall : MonoBehaviour
 {
