@@ -21,7 +21,7 @@ public class SceneManage : MonoBehaviour
 
     public void Game()
     {
-        SceneManager.LoadScene("World Robin");
+        SceneManager.LoadScene("World");
     }
 
     public void Quit()
