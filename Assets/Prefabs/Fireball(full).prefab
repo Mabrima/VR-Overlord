@@ -122,6 +122,8 @@ MonoBehaviour:
   damage: 3
   explosionRadious: {fileID: 1160818345497368808}
   explosionEffect: {fileID: 6536167567997085422}
+  navMeshObstacle: {fileID: 6946323770213730218, guid: e1281c4a69f260343a52611455b6a554,
+    type: 3}
 --- !u!1001 &1160818345854132088
 PrefabInstance:
   m_ObjectHideFlags: 0
