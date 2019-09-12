@@ -14,8 +14,7 @@ public class Village : MonoBehaviour
 
     private void Start()
     {
-        LoseText.SetActive(false);
-        health = GetComponent<UnitHealth>();
+        ResetVillage();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,5 +32,11 @@ public class Village : MonoBehaviour
     void GameOver()
     {
         LoseText.SetActive(true);
+    }
+
+    public void ResetVillage()
+    {
+        LoseText.SetActive(false);
+        health = GetComponent<UnitHealth>();
     }
 }
