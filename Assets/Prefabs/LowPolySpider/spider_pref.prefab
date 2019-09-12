@@ -1123,7 +1123,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1715103906888602}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.075
+  m_Radius: 0.01
   m_Speed: 0.3
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1160,7 +1160,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15, z: 0.15}
+  m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!54 &6729532475457660553
 Rigidbody:

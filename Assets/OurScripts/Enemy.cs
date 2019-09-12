@@ -14,31 +14,30 @@ public class Enemy : MonoBehaviour
     float speed = 0.1f;
 
     Animator animator;
-    UnitHealth unitHealth;
+    UnitHealth health;
     NavMeshAgent agent;
-    GameObject box;
+    GameObject village;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        box = GameObject.FindGameObjectWithTag("Player");
-        unitHealth = GetComponent<UnitHealth>();
+        village = GameObject.FindGameObjectWithTag("Village");
+        health = GetComponent<UnitHealth>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         agent.speed = speed;
-        if (box != null)
-            agent.SetDestination(box.transform.position);
+        if (health.health > 0)
+            agent.SetDestination(village.transform.position);
+        else
+            agent.SetDestination(transform.position);
     }
 
     public void TakingDamage()
     {
-        if (unitHealth.health <= 0)
+        if (health.health <= 0)
             StartCoroutine(Dying());
         else
             animator.SetTrigger("Hit");
