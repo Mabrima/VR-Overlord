@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
 
     #region Public variables
     public Wave[] waves;
+    public GameObject WinText;
     public Transform spawnPoint;
     public Transform spiderParent;
     public float timeBetweenEnemies;
@@ -41,6 +42,7 @@ public class SpawnManager : MonoBehaviour
         //-1 on length because we are starting on index 0.
         totalWaves = waves.Length - 1;
         StartNextWave(); //Now the spawnmanager starts the spawning. Call this function in GameManager when ready.
+        WinText.SetActive(false);
     }
 
     void StartNextWave()
@@ -106,5 +108,14 @@ public class SpawnManager : MonoBehaviour
     {
         currentWave = -1;
         StartNextWave();
+    }
+
+    public void LastWave()
+    {
+        if (currentWave == totalWaves)
+        {
+            WinText.SetActive(true);
+
+        }
     }
 }

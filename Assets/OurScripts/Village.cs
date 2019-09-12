@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /* Script Author: Johan Appelgren
- * Edits by:
+ * Edits by: Philip Åkerblom
  */
 
 public class Village : MonoBehaviour
 {
-
+    public GameObject LoseText;
     UnitHealth health;
 
     private void Start()
     {
+        LoseText.SetActive(false);
         health = GetComponent<UnitHealth>();
     }
 
@@ -30,6 +32,6 @@ public class Village : MonoBehaviour
 
     void GameOver()
     {
-        //Game Over Screen
+        LoseText.SetActive(true);
     }
 }
