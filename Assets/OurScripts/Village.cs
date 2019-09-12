@@ -20,8 +20,16 @@ public class Village : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            health.TakeDamage(1);
+            health.TakeDamage(other.GetComponent<Enemy>().damage);
             other.GetComponent<UnitHealth>()?.TakeDamage(50);
+
+            if (health.health <= 0)
+                GameOver();
         }
+    }
+
+    void GameOver()
+    {
+        //Game Over Screen
     }
 }

@@ -10,8 +10,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField]
-    float speed = 0.1f;
+    [SerializeField] float speed = 0.1f;
+    public int damage;
 
     Animator animator;
     UnitHealth health;

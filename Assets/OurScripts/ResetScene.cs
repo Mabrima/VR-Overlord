@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class ResetScene : MonoBehaviour
 {
+    private void Start()
+    {
+        //all references here.
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "LeftControllerAnchor" || other.name == "RightControllerAnchor")
-        {
-            //This does not work. Crashes to Oculus Menu.
-            SceneManager.LoadScene("World");
-        }
+            SceneReset();
+    }
+
+    public void SceneReset()
+    {
+        //call all references and reset them all to starting values.
     }
 }
