@@ -6039,6 +6039,11 @@ PrefabInstance:
       propertyPath: timeBetweenEnemies
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: spiderParent
+      value: 
+      objectReference: {fileID: 1994258616}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fafdc34ba468a46a911f0712957953, type: 3}
 --- !u!4 &752766969 stripped
@@ -6062,7 +6067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &754406178
 Transform:
   m_ObjectHideFlags: 0
@@ -15918,7 +15923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1994258616
 Transform:
   m_ObjectHideFlags: 0

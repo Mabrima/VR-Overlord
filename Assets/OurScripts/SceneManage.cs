@@ -23,9 +23,9 @@ public class SceneManage : MonoBehaviour
 
     public void Game()
     {
-        ResetGame();
         menu.SetActive(false);
         game.SetActive(true);
+        ResetGame();
     }
 
     public void ResetGame()

@@ -20,6 +20,7 @@ public class SpawnManager : MonoBehaviour
     #region Public variables
     public Wave[] waves;
     public Transform spawnPoint;
+    public Transform spiderParent;
     public float timeBetweenEnemies;
     #endregion
 
@@ -79,7 +80,7 @@ public class SpawnManager : MonoBehaviour
 
             //Instantiate enemy
             GameObject enemy = waves[currentWave].enemyPrefab;
-            Instantiate(enemy, spawnPoint.position, Quaternion.identity);
+            Instantiate(enemy, spawnPoint.position, Quaternion.identity, spiderParent);
             //CreateVibration.singleton.CallVibration(0.2f, true, true); //Call this function when you want to create a vibration.
 
             yield return new WaitForSeconds(timeBetweenEnemies);
