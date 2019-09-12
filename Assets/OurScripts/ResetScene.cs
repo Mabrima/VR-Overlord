@@ -7,7 +7,7 @@ public class ResetScene : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "LeftControllerAnchor" || other.name == "RightControllerAnchor" || other.name == "Rock")
+        if (other.name == "LeftControllerAnchor" || other.name == "RightControllerAnchor")
         {
             //This does not work. Crashes to Oculus Menu.
             SceneManager.LoadScene("World");
