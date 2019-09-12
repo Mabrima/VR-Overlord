@@ -212,8 +212,6 @@ public class OVRGrabber : MonoBehaviour
 		OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;
 
-        CreateVibration.singleton.CallVibration(0.2f, true, true);
-
         // Iterate grab candidates and find the closest grabbable candidate
         foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
         {
@@ -245,10 +243,23 @@ public class OVRGrabber : MonoBehaviour
 
         if (closestGrabbable != null)
         {
+
             if (closestGrabbable.isGrabbed)
             {
                 closestGrabbable.grabbedBy.OffhandGrabbed(closestGrabbable);
             }
+
+            // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
+            bool leftController = m_controller == OVRInput.Controller.LTouch;
+            if (closestGrabbable.CompareTag("FireBall"))
+            {
+                OVRInput.SetControllerVibration(2, 0.2f, m_controller);
+            }
+            else
+            {
+                CreateVibration.singleton.CallVibration(0.05f, leftController, !leftController);
+            }
+            // ----------------------------------------------------------- End ------------------------------------------------------------------------------------------
 
             m_grabbedObj = closestGrabbable;
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
@@ -327,7 +338,14 @@ public class OVRGrabber : MonoBehaviour
     {
         if (m_grabbedObj != null)
         {
-			OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
+            // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
+            if (m_grabbedObj.CompareTag("FireBall"))
+            {
+                OVRInput.SetControllerVibration(0, 0, m_controller);
+            }
+            // ----------------------------------------------------------- End ------------------------------------------------------------------------------------------
+
+            OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
             OVRPose offsetPose = new OVRPose { position = m_anchorOffsetPosition, orientation = m_anchorOffsetRotation };
             localPose = localPose * offsetPose;
 

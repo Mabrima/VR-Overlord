@@ -1330,7 +1330,7 @@ public static class OVRInput
 	private static HapticInfo[] hapticInfos;
 
 	private static float OPENVR_MAX_HAPTIC_AMPLITUDE = 4000.0f;
-	private static float HAPTIC_VIBRATION_DURATION_SECONDS = 2.0f;
+	private static float HAPTIC_VIBRATION_DURATION_SECONDS = 10.0f;
 	private static String OPENVR_TOUCH_NAME = "oculus_touch";
 	private static String OPENVR_VIVE_CONTROLLER_NAME = "vive_controller";
 	private static String OPENVR_WINDOWSMR_CONTROLLER_NAME = "holographic_controller";
