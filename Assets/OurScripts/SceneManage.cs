@@ -1,33 +1,43 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
-/* Script Author: 
- * Edits by: 
+/* Script Author: Philip Åkerblom
+ * Edits by: Johan Appelgren
  */
 
 public class SceneManage : MonoBehaviour
 {
+    [SerializeField] GameObject game;
+    [SerializeField] GameObject menu;
+    Village village;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        village = FindObjectOfType<Village>();
     }
-
 
     public void MenuScene()
     {
-        SceneManager.LoadScene("MenuScene");
+        menu.SetActive(true);
+        game.SetActive(false);
     }
 
     public void Game()
     {
-        SceneManager.LoadScene("World");
+        ResetGame();
+        menu.SetActive(false);
+        game.SetActive(true);
+    }
+
+    public void ResetGame()
+    {
+        village.GetComponent<UnitHealth>().ResetHealth();
+
+        //spawnmanager reset code here
+
     }
 
     public void Quit()
     {
         Application.Quit();
     }
-
-
 }

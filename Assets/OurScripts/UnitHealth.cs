@@ -8,8 +8,13 @@ using UnityEngine;
 
 public class UnitHealth : MonoBehaviour
 {
+    public int health;
+    int startingHealth;
 
-    [SerializeField] public int health;
+    void Start()
+    {
+        startingHealth = health;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -17,5 +22,10 @@ public class UnitHealth : MonoBehaviour
         health = health <= 0 ? 0 : health;
 
         GetComponent<Enemy>()?.TakingDamage();
+    }
+
+    public void ResetHealth()
+    {
+        health = startingHealth;
     }
 }
