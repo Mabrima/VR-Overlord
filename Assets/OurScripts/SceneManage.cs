@@ -13,6 +13,8 @@ public class SceneManage : MonoBehaviour
     private void Start()
     {
         village = FindObjectOfType<Village>();
+        game.SetActive(false);
+        menu.SetActive(true);
     }
 
     public void MenuScene()
