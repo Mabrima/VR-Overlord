@@ -6119,14 +6119,13 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[3].enemiesPerWave
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[3].enemyPrefab
       value: 
-      objectReference: {fileID: 1715103906888602, guid: 33b828b8f1c31334988de54e3fe47ee6,
-        type: 3}
+      objectReference: {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 3}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[4].enemiesPerWave
