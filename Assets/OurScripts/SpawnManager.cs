@@ -115,7 +115,11 @@ public class SpawnManager : MonoBehaviour
         if (currentWave == totalWaves)
         {
             WinText.SetActive(true);
-
         }
+    }
+
+    public void ResetWaves()
+    {
+
     }
 }
