@@ -9,12 +9,13 @@ using UnityEngine.UI;
 
 public class Village : MonoBehaviour
 {
-    public GameObject LoseText;
     UnitHealth health;
+    VillageTextController text;
 
     private void Start()
     {
-        ResetVillage();
+        health = GetComponent<UnitHealth>();
+        text = GetComponent<VillageTextController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,18 +26,7 @@ public class Village : MonoBehaviour
             other.GetComponent<UnitHealth>()?.TakeDamage(50);
 
             if (health.health <= 0)
-                GameOver();
+                text.GameOver();
         }
-    }
-
-    void GameOver()
-    {
-        LoseText.SetActive(true);
-    }
-
-    public void ResetVillage()
-    {
-        LoseText.SetActive(false);
-        health = GetComponent<UnitHealth>();
     }
 }

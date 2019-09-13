@@ -24,15 +24,8 @@ public class Enemy : MonoBehaviour
         village = GameObject.FindGameObjectWithTag("Village");
         health = GetComponent<UnitHealth>();
         animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
+        StartCoroutine("Navigation");
         agent.speed = speed;
-        if (health.health > 0)
-            agent.SetDestination(village.transform.position);
-        else
-            agent.SetDestination(transform.position);
     }
 
     public void TakingDamage()
@@ -43,11 +36,21 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Hit");
     }
 
+    IEnumerator Navigation()
+    {
+        while (health.health > 0)
+        {
+            agent.SetDestination(village.transform.position);
+
+            yield return new WaitForSeconds(.5f);
+        }
+        agent.SetDestination(transform.position);
+    }
+
     IEnumerator Dying()
     {
         animator.SetBool("Death", true);
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
-        yield return null;
     }
 }

@@ -8,22 +8,25 @@ using UnityEngine;
 
 public class UnitHealth : MonoBehaviour
 {
-    public int health;
-    int startingHealth;
+    [HideInInspector] public int health;
+    [SerializeField] int startingHealth;
 
     void Start()
     {
-        startingHealth = health;
+        health = startingHealth;
     }
 
+    //Take incoming damage and apply it to own health
     public void TakeDamage(int damage)
     {
         health -= damage;
         health = health <= 0 ? 0 : health;
 
+        //animation
         GetComponent<Enemy>()?.TakingDamage();
     }
 
+    //Sets own health to starting value
     public void ResetHealth()
     {
         health = startingHealth;
