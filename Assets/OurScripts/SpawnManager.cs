@@ -10,6 +10,7 @@ using UnityEngine;
 public class Wave
 {
     public int enemiesPerWave;
+    public float timeBetweenEnemies;
     public GameObject enemyPrefab;
 }
 
@@ -21,7 +22,6 @@ public class SpawnManager : MonoBehaviour
     public Wave[] waves;
     public Transform spawnPoint;
     public Transform spiderParent;
-    public float timeBetweenEnemies;
     #endregion
 
     #region Private variables
@@ -60,7 +60,6 @@ public class SpawnManager : MonoBehaviour
                 {
                     //Do something after every third wave.
                 }
-
             }
             return;
         }
@@ -85,7 +84,7 @@ public class SpawnManager : MonoBehaviour
             Instantiate(enemy, spawnPoint.position, Quaternion.identity, spiderParent);
             //CreateVibration.singleton.CallVibration(0.2f, true, true); //Call this function when you want to create a vibration.
 
-            yield return new WaitForSeconds(timeBetweenEnemies);
+            yield return new WaitForSeconds(waves[currentWave].timeBetweenEnemies);
         }
         yield return null;
 

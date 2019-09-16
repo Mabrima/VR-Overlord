@@ -6163,6 +6163,26 @@ PrefabInstance:
       propertyPath: waves.Array.data[0].enemiesPerWave
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: waves.Array.data[0].timeBetweenEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: waves.Array.data[2].timeBetweenEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: waves.Array.data[3].timeBetweenEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: waves.Array.data[4].timeBetweenEnemies
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fafdc34ba468a46a911f0712957953, type: 3}
 --- !u!4 &752766969 stripped

@@ -253,7 +253,7 @@ public class OVRGrabber : MonoBehaviour
             bool leftController = m_controller == OVRInput.Controller.LTouch;
             if (closestGrabbable.CompareTag("FireBall"))
             {
-                OVRInput.SetControllerVibration(2, 0.2f, m_controller);
+                OVRInput.SetControllerVibration(1, 0.2f, m_controller);
             }
             else
             {
