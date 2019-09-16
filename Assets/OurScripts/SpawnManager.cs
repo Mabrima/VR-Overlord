@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /* Script Author: Kian Parsa
  * Edits by: Robin Arkblad
@@ -22,6 +23,8 @@ public class SpawnManager : MonoBehaviour
     public Wave[] waves;
     public Transform spawnPoint;
     public Transform spiderParent;
+
+    public TextMeshPro currentwaveText;
     #endregion
 
     #region Private variables
@@ -76,8 +79,9 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnEnemies()
     {
         GameObject enemy = waves[currentWave].enemyPrefab;
-        //Spawn enemies while amount of enemies are under predetermined enemy amount.
-        while (spawnedEnemies < totalEnemiesInCurrentWave)
+        
+        currentwaveText.text = "Current Wave: " + currentWave;
+        while (spawnedEnemies < totalEnemiesInCurrentWave) //Spawn enemies while amount of enemies are under predetermined enemy amount.
         {
             spawnedEnemies++;
             Instantiate(enemy, spawnPoint.position, Quaternion.identity, spiderParent);

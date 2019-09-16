@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /* Script Author: Philip Åkerblom
  * Edits by: Johan Appelgren
@@ -27,14 +28,15 @@ public class SceneManage : MonoBehaviour
     {
         menu.SetActive(false);
         game.SetActive(true);
-        ResetGame();
+        StartCoroutine(ResetGame());
     }
 
-    public void ResetGame()
+    IEnumerator ResetGame()
     {
-        village.GetComponent<UnitHealth>().ResetHealth();
+        
+        yield return new WaitForSeconds(1f);
         SpawnManager.instance.ResetWaves();
-
+        village.GetComponent<UnitHealth>().ResetHealth();
     }
 
     public void Quit()
