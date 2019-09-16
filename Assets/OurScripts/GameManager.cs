@@ -31,13 +31,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
     void WonGame() //Call whenever we have won. 
     {
         //Show win-screen

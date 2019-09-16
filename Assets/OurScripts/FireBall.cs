@@ -49,9 +49,9 @@ public class FireBall : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         GameObject tempNMO = Instantiate(navMeshObstacle, transform.position, Quaternion.identity);
         GameObject tempExplosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        GameObject tempFire = Instantiate(fireEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(1);
         Destroy(tempExplosion);
-        GameObject tempFire = Instantiate(fireEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(19);
         Destroy(tempFire);
         Destroy(tempNMO);

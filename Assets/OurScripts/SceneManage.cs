@@ -9,12 +9,10 @@ public class SceneManage : MonoBehaviour
     [SerializeField] GameObject game;
     [SerializeField] GameObject menu;
     Village village;
-    SpawnManager waves;
 
     private void Start()
     {
         village = FindObjectOfType<Village>();
-        waves = FindObjectOfType<SpawnManager>();
         game.SetActive(false);
         menu.SetActive(true);
     }
@@ -35,7 +33,7 @@ public class SceneManage : MonoBehaviour
     public void ResetGame()
     {
         village.GetComponent<UnitHealth>().ResetHealth();
-        waves.ResetWaves();
+        SpawnManager.instance.ResetWaves();
 
     }
 
