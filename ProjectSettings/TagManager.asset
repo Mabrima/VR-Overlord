@@ -9,6 +9,7 @@ TagManager:
   - Village
   - FireBall
   - RockSpawner
+  - LightningBolt
   layers:
   - Default
   - TransparentFX

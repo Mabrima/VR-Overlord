@@ -11,10 +11,27 @@ public class LightningBolt : MonoBehaviour
     [HideInInspector] public GameObject end;
     [HideInInspector] public GameObject prefab;
     [SerializeField] int damage = 10;
+    OVRGrabber grabber;
+    bool holdingLightning = false;
 
-    void Start()
+
+    private void OnEnable()
     {
+        grabber = GetComponent<OVRGrabber>();
         StartCoroutine(UpdateLightningPosition());
+    }
+
+    void Update()
+    {
+        //every 10th frame, check if lightning has been grabbed.
+        if (Time.frameCount % 10 == 0)
+            holdingLightning = grabber.releasedLightning;
+        //if it has...
+        if (holdingLightning)
+        {
+            grabber.releasedLightning = false;
+            StartCoroutine(LightningCoroutine());
+        }
     }
 
     //Sets lightning end position to the ground
@@ -24,12 +41,13 @@ public class LightningBolt : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
                 end.transform.position = hit.point;
+
             yield return new WaitForSeconds(0.05f);
         } while (true);
     }
 
     //Start this coroutine when the player releases the lightning bolt
-    public IEnumerator LightningStrike()
+    IEnumerator LightningCoroutine()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
         {
@@ -47,6 +65,8 @@ public class LightningBolt : MonoBehaviour
 
     void ReturnLightning()
     {
+
+        //code for returning lightning power to toolbox here
 
         gameObject.SetActive(false);
     }
