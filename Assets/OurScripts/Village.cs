@@ -23,10 +23,15 @@ public class Village : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             health.TakeDamage(other.GetComponent<Enemy>().damage);
-            other.GetComponent<UnitHealth>()?.TakeDamage(50);
+            other.GetComponent<UnitHealth>().TakeDamage(50);
 
             if (health.health <= 0)
                 text.GameOver();
         }
+    }
+
+    public void ResetHealth()
+    {
+        health.ResetHealth();
     }
 }

@@ -36,7 +36,7 @@ public class SceneManage : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         SpawnManager.instance.ResetWaves();
-        village.GetComponent<UnitHealth>().ResetHealth();
+        village.ResetHealth();
     }
 
     public void Quit()
