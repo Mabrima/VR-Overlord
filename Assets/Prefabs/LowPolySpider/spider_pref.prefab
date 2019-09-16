@@ -1179,6 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  startingHealth: 3
 --- !u!1 &1719841372004032
 GameObject:
   m_ObjectHideFlags: 0
