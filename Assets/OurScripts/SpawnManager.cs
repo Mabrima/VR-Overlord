@@ -31,40 +31,43 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private int currentWave;
     private int totalWaves;
-    private int currentWavesDefeated;
     VillageTextController text;
     #endregion
+
+    public static SpawnManager instance = null;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentWave -= 1;
-        //-1 on length because we are starting on index 0.
         totalWaves = waves.Length - 1;
-        StartNextWave(); //Now the spawnmanager starts the spawning. Call this function in GameManager when ready.
         text = FindObjectOfType<VillageTextController>();
     }
 
     void StartNextWave()
     {
-        currentWave++;
-
-        //Win
         if (currentWave > totalWaves)
         {
-            currentWavesDefeated++;
-
-            if (currentWavesDefeated % 3 == 0) //Every third wave defeated go to shop/whatever.
-            {
-                if (currentWavesDefeated != 0) //dont remember if this is neccessary..
-                {
-                    //Do something after every third wave.
-                }
-            }
+            text.YouWin();
             return;
         }
+
         totalEnemiesInCurrentWave = waves[currentWave].enemiesPerWave;
-        enemiesInWaveLeft = 0;
+        enemiesInWaveLeft = waves[currentWave].enemiesPerWave;
         spawnedEnemies = 0;
 
         StartCoroutine(SpawnEnemies());
@@ -75,48 +78,32 @@ public class SpawnManager : MonoBehaviour
         //Spawn enemies while amount of enemies are under predetermined enemy amount.
         while (spawnedEnemies < totalEnemiesInCurrentWave)
         {
-
             spawnedEnemies++;
-            enemiesInWaveLeft++;
 
             //Instantiate enemy
             GameObject enemy = waves[currentWave].enemyPrefab;
             Instantiate(enemy, spawnPoint.position, Quaternion.identity, spiderParent);
-            //CreateVibration.singleton.CallVibration(0.2f, true, true); //Call this function when you want to create a vibration.
-
             yield return new WaitForSeconds(waves[currentWave].timeBetweenEnemies);
         }
+        currentWave++;
         yield return null;
 
     }
 
-    public void EnemiesDefeated() //If we have multiple waves.  --  Call this whenever an enemy dies.
+    public void EnemyDefeated() //If we have multiple waves.  --  Call this whenever an enemy dies.
     {
         enemiesInWaveLeft--;
 
-        if (enemiesInWaveLeft == 0 && spawnedEnemies == totalEnemiesInCurrentWave)
+        if (enemiesInWaveLeft == 0)
         {
-
             StartNextWave();
         }
 
     }
 
-    //Start waves again.
-    public void NextLevel() //If we only have 1 wave.
-    {
-        currentWave = -1;
-        StartNextWave();
-    }
-
-    public void LastWave()
-    {
-        if (currentWave == totalWaves)
-            text.YouWin();
-    }
-
     public void ResetWaves()
     {
-
+        currentWave = 0;
+        StartNextWave(); //Now the spawnmanager starts the spawning. Call this function in GameManager when ready.
     }
 }

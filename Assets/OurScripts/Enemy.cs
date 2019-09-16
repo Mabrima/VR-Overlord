@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Dying()
     {
+        SpawnManager.instance.EnemyDefeated();
         animator.SetBool("Death", true);
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
