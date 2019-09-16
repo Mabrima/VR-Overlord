@@ -394,11 +394,5 @@ public class OVRGrabber : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (OVRInput.Get())
-        {
 
-        }
-    }
 }
