@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Village
   - FireBall
+  - RockSpawner
   layers:
   - Default
   - TransparentFX
