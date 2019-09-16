@@ -13,6 +13,8 @@ public class FireBall : MonoBehaviour
     [SerializeField]
     GameObject explosionEffect;
     [SerializeField]
+    GameObject fireEffect;
+    [SerializeField]
     GameObject navMeshObstacle;
 
     bool exploding = false;
@@ -49,9 +51,9 @@ public class FireBall : MonoBehaviour
         GameObject tempExplosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(1);
         Destroy(tempExplosion);
-        //Create burn effect
+        GameObject tempFire = Instantiate(fireEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(19);
-        //Destroy burn effect
+        Destroy(tempFire);
         Destroy(tempNMO);
         Destroy(transform.parent.gameObject);
         yield return null;

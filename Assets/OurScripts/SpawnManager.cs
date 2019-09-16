@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* Script Author: Kian Parsa
- * Edits by: 
+ * Edits by: Robin Arkblad
  */
 
 [System.Serializable]
