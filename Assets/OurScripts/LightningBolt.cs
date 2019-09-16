@@ -17,17 +17,18 @@ public class LightningBolt : MonoBehaviour
         StartCoroutine(UpdateLightningPosition());
     }
 
+    //Sets lightning end position to the ground
     IEnumerator UpdateLightningPosition()
     {
         do
         {
-            //Sets lightning end position to the ground
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
                 end.transform.position = hit.point;
             yield return new WaitForSeconds(0.05f);
         } while (true);
     }
 
+    //Start this coroutine when the player releases the lightning bolt
     public IEnumerator LightningStrike()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
@@ -40,5 +41,13 @@ public class LightningBolt : MonoBehaviour
             prefab.GetComponent<LightningBoltScript>().ChaosFactor = 0.05f;
             gameObject.SetActive(false);
         }
+        else
+            ReturnLightning();
+    }
+
+    void ReturnLightning()
+    {
+
+        gameObject.SetActive(false);
     }
 }
