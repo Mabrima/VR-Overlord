@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class UnitHealth : MonoBehaviour
 {
-    [HideInInspector] public int health;
     [SerializeField] int startingHealth;
+    public int health;
 
     void Start()
     {
