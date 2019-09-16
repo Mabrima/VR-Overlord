@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 567791629143270039}
   - component: {fileID: 567791629143270036}
   - component: {fileID: 567791629143270037}
-  - component: {fileID: 567791629143270034}
   - component: {fileID: 567791629143270035}
   - component: {fileID: 567791629143270032}
   - component: {fileID: 567791629143270033}
+  - component: {fileID: 5444983769498412544}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 567791629143270046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16667, y: 0.16667, z: 0.16667}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567791629143270046}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -1357455909473023696, guid: f972f48c104513446a4796f0e45e6132, type: 3}
 --- !u!23 &567791629143270037
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -82,19 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &567791629143270034
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 567791629143270046}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &567791629143270035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +129,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &5444983769498412544
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567791629143270046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -1357455909473023696, guid: f972f48c104513446a4796f0e45e6132, type: 3}
