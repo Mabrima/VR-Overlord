@@ -10,6 +10,7 @@ TagManager:
   - FireBall
   - RockSpawner
   - LightningBolt
+  - Controller
   layers:
   - Default
   - TransparentFX

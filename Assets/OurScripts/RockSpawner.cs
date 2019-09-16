@@ -22,7 +22,7 @@ public class RockSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnRocks());
+
     }
 
     private IEnumerator SpawnRocks()
@@ -47,5 +47,13 @@ public class RockSpawner : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Controller"))
+        {
+            StartCoroutine(SpawnRocks());
+        }
     }
 }
