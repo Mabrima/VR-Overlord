@@ -234,8 +234,6 @@ public class OVRGrabber : MonoBehaviour
                     closestGrabbableCollider = grabbableCollider;
                 }
             }
-
-            //HapticAudioCreator.singleton.CreateHapticAudio(90, 1, 100); Makes Grabbable not work.
         }
 
         // Disable grab volumes to prevent overlaps
@@ -392,6 +390,15 @@ public class OVRGrabber : MonoBehaviour
         if (m_grabbedObj == grabbable)
         {
             GrabbableRelease(Vector3.zero, Vector3.zero);
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (OVRInput.Get())
+        {
+
         }
     }
 }
