@@ -392,13 +392,4 @@ public class OVRGrabber : MonoBehaviour
             GrabbableRelease(Vector3.zero, Vector3.zero);
         }
     }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (OVRInput.Get())
-        {
-
-        }
-    }
 }
