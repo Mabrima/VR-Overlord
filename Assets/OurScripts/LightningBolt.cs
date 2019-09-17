@@ -28,13 +28,10 @@ public class LightningBolt : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             rb.useGravity = false;
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-            StartCoroutine(LightningStrike());
+            StartCoroutine(LightningStrike(collision));
         }
-        else
-        {
-            rb.velocity = new Vector3(0, 0, 0);
-            gameObject.SetActive(false);
-        }
+        else if (collision.transform.CompareTag("Floor"))
+            ReturnLightning();
     }
 
     //Sets lightning end position to the ground
@@ -50,21 +47,16 @@ public class LightningBolt : MonoBehaviour
     }
 
     //Start this coroutine when the player releases the lightning bolt
-    IEnumerator LightningStrike()
+    IEnumerator LightningStrike(Collision col)
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
-        {
-            GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.3f;
-            hit.transform.GetComponent<UnitHealth>()?.TakeDamage(damage);
+        GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.3f;
+        col.transform.GetComponent<UnitHealth>()?.TakeDamage(damage);
 
-            yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
-            GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.02f;
-            rb.useGravity = true;
-            gameObject.SetActive(false);
-        }
-        else
-            ReturnLightning();
+        GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.02f;
+        rb.useGravity = true;
+        gameObject.SetActive(false);
     }
 
     void ReturnLightning()
@@ -72,6 +64,7 @@ public class LightningBolt : MonoBehaviour
 
         //code for returning lightning power to toolbox here
 
+        rb.velocity = new Vector3(0, 0, 0);
         gameObject.SetActive(false);
     }
 }

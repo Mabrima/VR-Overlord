@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: -178977660043485240}
   - component: {fileID: -7792398595171001244}
   - component: {fileID: 5285423079992975205}
+  - component: {fileID: 8382240333809173309}
   m_Layer: 0
   m_Name: FootmanHP
   m_TagString: Enemy
@@ -947,6 +948,20 @@ CapsuleCollider:
   m_GameObject: {fileID: 100048}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88, z: 0.1}
+--- !u!136 &8382240333809173309
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

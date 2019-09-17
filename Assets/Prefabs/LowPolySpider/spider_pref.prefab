@@ -1059,6 +1059,7 @@ GameObject:
   - component: {fileID: 1775496795}
   - component: {fileID: 3202395476920033831}
   - component: {fileID: 2221640002936254856}
+  - component: {fileID: 1381198201866242961}
   m_Layer: 0
   m_Name: spider_pref
   m_TagString: Enemy
@@ -1176,6 +1177,19 @@ SphereCollider:
   m_GameObject: {fileID: 1715103906888602}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.11
+  m_Center: {x: 0, y: 0.08, z: 0.01}
+--- !u!135 &1381198201866242961
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715103906888602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.11
