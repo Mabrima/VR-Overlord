@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /* Script Author: Philip Åkerblom
- * Edits by: Johan Appelgren
+ * Edits by: Johan Appelgren, Robin Arkblad
  */
 
 public class SceneManage : MonoBehaviour
@@ -10,10 +10,12 @@ public class SceneManage : MonoBehaviour
     [SerializeField] GameObject game;
     [SerializeField] GameObject menu;
     Village village;
+    RockSpawner[] rockSpawners;
 
     private void Start()
     {
         village = FindObjectOfType<Village>();
+        rockSpawners = FindObjectsOfType<RockSpawner>();
         game.SetActive(false);
         menu.SetActive(true);
     }
@@ -28,6 +30,10 @@ public class SceneManage : MonoBehaviour
     {
         menu.SetActive(false);
         game.SetActive(true);
+        foreach (RockSpawner rockSpawner in rockSpawners)
+        {
+            rockSpawner.Reset();
+        }
         StartCoroutine(ResetGame());
     }
 
