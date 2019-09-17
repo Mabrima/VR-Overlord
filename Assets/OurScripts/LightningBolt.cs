@@ -9,32 +9,31 @@ using UnityEngine;
 public class LightningBolt : MonoBehaviour
 {
     [HideInInspector] public GameObject end;
-    [HideInInspector] public GameObject prefab;
     [SerializeField] int damage = 10;
-    [SerializeField] OVRGrabber grabberRight;
-    [SerializeField] OVRGrabber grabberLeft;
+    Rigidbody rb;
 
     private void OnEnable()
     {
         StartCoroutine(UpdateLightningPosition());
     }
-
-    void Update()
+    void Start()
     {
-        //every 10th frame...
-        if (Time.frameCount % 10 == 0)
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Terrain") || collision.transform.CompareTag("Enemy"))
         {
-            //check if lightning has been released. If it has...
-            if (grabberRight.releasedLightning)
-            {
-                grabberRight.releasedLightning = false;
-                StartCoroutine(LightningCoroutine());
-            }
-            if (grabberLeft.releasedLightning)
-            {
-                grabberLeft.releasedLightning = false;
-                StartCoroutine(LightningCoroutine());
-            }
+            rb.velocity = new Vector3(0, 0, 0);
+            rb.useGravity = false;
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+            StartCoroutine(LightningStrike());
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+            gameObject.SetActive(false);
         }
     }
 
@@ -51,16 +50,17 @@ public class LightningBolt : MonoBehaviour
     }
 
     //Start this coroutine when the player releases the lightning bolt
-    IEnumerator LightningCoroutine()
+    IEnumerator LightningStrike()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
         {
-            prefab.GetComponent<LightningBoltScript>().ChaosFactor = 0.3f;
+            GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.3f;
             hit.transform.GetComponent<UnitHealth>()?.TakeDamage(damage);
 
             yield return new WaitForSeconds(0.5f);
 
-            prefab.GetComponent<LightningBoltScript>().ChaosFactor = 0.05f;
+            GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.02f;
+            rb.useGravity = true;
             gameObject.SetActive(false);
         }
         else

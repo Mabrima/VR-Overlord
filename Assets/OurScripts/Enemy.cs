@@ -52,6 +52,6 @@ public class Enemy : MonoBehaviour
         SpawnManager.instance.EnemyDefeated();
         animator.SetBool("Death", true);
         yield return new WaitForSeconds(2);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

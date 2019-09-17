@@ -598,6 +598,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20873924}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &30438741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30438742}
+  m_Layer: 0
+  m_Name: PoolOfEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30438742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30438741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.653, y: 0.747, z: -0.59778625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &51527697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6544,7 +6574,7 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[4].timeBetweenEnemies
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
@@ -6569,16 +6599,32 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[0].enemiesInWave
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[4].enemiesInWave
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[1].timeBetweenEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: hierarchyPool
+      value: 
+      objectReference: {fileID: 30438742}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: objectToPool
+      value: 
+      objectReference: {fileID: 1715103906888602, guid: 33b828b8f1c31334988de54e3fe47ee6,
+        type: 3}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: amountToPool
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
