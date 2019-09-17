@@ -80,7 +80,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject enemy = waves[currentWave].enemyPrefab;
         
-        currentwaveText.text = "Current Wave: " + currentWave;
+        currentwaveText.text = "Current Wave: " + currentWave + 1;
         while (spawnedEnemies < totalEnemiesInCurrentWave) //Spawn enemies while amount of enemies are under predetermined enemy amount.
         {
             spawnedEnemies++;

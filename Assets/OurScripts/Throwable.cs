@@ -23,7 +23,7 @@ public class Throwable : MonoBehaviour
         {
             health--;
             if (health <= 0)
-                Destroy(gameObject);
+                gameObject.SetActive(false);
         }
         else if (other.CompareTag("Terrain"))
         {
@@ -38,8 +38,8 @@ public class Throwable : MonoBehaviour
 
     IEnumerator RemoveAfterTime()
     {
-        yield return new WaitForSeconds(10);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(5);
+        gameObject.SetActive(false);
         yield return null;
     }
 }

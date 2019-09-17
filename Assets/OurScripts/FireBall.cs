@@ -55,7 +55,9 @@ public class FireBall : MonoBehaviour
         yield return new WaitForSeconds(19);
         Destroy(tempFire);
         Destroy(tempNMO);
-        Destroy(transform.parent.gameObject);
+        colliderSphere.enabled = true;
+        exploding = false;
+        transform.parent.gameObject.SetActive(false);
         yield return null;
     }
 

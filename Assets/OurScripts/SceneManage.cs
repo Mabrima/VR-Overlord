@@ -9,8 +9,8 @@ public class SceneManage : MonoBehaviour
 {
     [SerializeField] GameObject game;
     [SerializeField] GameObject menu;
-    Village village;
-    RockSpawner[] rockSpawners;
+    [SerializeField] Village village;
+    [SerializeField] RockSpawner[] rockSpawners;
 
     private void Start()
     {
@@ -30,10 +30,6 @@ public class SceneManage : MonoBehaviour
     {
         menu.SetActive(false);
         game.SetActive(true);
-        foreach (RockSpawner rockSpawner in rockSpawners)
-        {
-            rockSpawner.Reset();
-        }
         StartCoroutine(ResetGame());
     }
 
@@ -41,6 +37,10 @@ public class SceneManage : MonoBehaviour
     {
         
         yield return new WaitForSeconds(1f);
+        foreach (RockSpawner rockSpawner in rockSpawners)
+        {
+            rockSpawner.Reset();
+        }
         SpawnManager.instance.ResetWaves();
         village.ResetHealth();
     }
