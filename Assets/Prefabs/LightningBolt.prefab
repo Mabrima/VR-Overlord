@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8695714406790190521
 Transform:
   m_ObjectHideFlags: 0
@@ -94,10 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   end: {fileID: 8695714405697344446}
-  prefab: {fileID: 8695714405697285886}
   damage: 10
-  grabberRight: {fileID: 0}
-  grabberLeft: {fileID: 0}
 --- !u!1001 &8695714405697244946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,12 +156,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 3}
---- !u!1 &8695714405697285886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 106988, guid: 15dec7b07032b2f4aa6f855bfbe120f7,
-    type: 3}
-  m_PrefabInstance: {fileID: 8695714405697244946}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8695714405697172858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490088, guid: 15dec7b07032b2f4aa6f855bfbe120f7,
