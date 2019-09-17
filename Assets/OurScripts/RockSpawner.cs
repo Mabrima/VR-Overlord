@@ -4,7 +4,7 @@ using UnityEngine;
 using OVR.OpenVR;
 
 /* Script Author: Robin Arkblad
- * Edits by:
+ * Edits by: Kian Parsa - Object pooling
  */
 
 public class RockSpawner : MonoBehaviour
@@ -13,21 +13,34 @@ public class RockSpawner : MonoBehaviour
     [SerializeField]
     GameObject rock;
     [SerializeField]
-    float timeBetweenRocks = 2;
+    float timeBetweenRocks = 0.5f;
     [SerializeField]
-    int initialSpawn = 3;
+    int initialSpawn = 10;
     [SerializeField]
     TextMesh text;
+
+    public Transform hierarchyPool;
+
+    public List<GameObject> pooledObjects;
+    public GameObject objectToPool;
+    public int amountToPool;
 
     int availableRocks = 0;
 
     public bool spawning = true;
 
-
     void Start()
     {
+        pooledObjects = new List<GameObject>();
+        for (int i = 0; i < amountToPool; i++)
+        {
+            GameObject obj = (GameObject)Instantiate(objectToPool);
+            obj.transform.parent = hierarchyPool;
+            obj.SetActive(false);
+            pooledObjects.Add(obj);
+        }
         //Testing
-        //Reset();
+        Reset();
     }
 
     public void Reset()
@@ -52,34 +65,27 @@ public class RockSpawner : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller") && availableRocks > 0)
         {
-            Instantiate(rock, transform.position, transform.rotation, transform);
-            availableRocks--;
-            text.text = "" + availableRocks;
+            GameObject rock = GetPooledObject();
+            if (rock != null)
+            {
+                rock.transform.position = transform.position;
+                rock.SetActive(true);
+                rock.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                availableRocks--;
+                text.text = "" + availableRocks;
+            }
         }
     }
 
-    //----------------- NO LONGER USED --------------------------
-    private IEnumerator SpawnRocksDeprecated()
+    public GameObject GetPooledObject()
     {
-        bool initialSpawning = true;
-        int spawned = 0;
-        while (initialSpawning)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
-            Instantiate(rock, transform.position, transform.rotation, transform);
-            spawned++;
-            if (spawned >= initialSpawn)
+            if (!pooledObjects[i].activeInHierarchy)
             {
-                initialSpawning = false;
+                return pooledObjects[i];
             }
-            yield return new WaitForSeconds(1);
         }
-
-        while (spawning)
-        {
-            Instantiate(rock, transform.position, transform.rotation, transform);
-            yield return new WaitForSeconds(timeBetweenRocks);
-        }
-
-        yield return null;
+        return null;
     }
 }
