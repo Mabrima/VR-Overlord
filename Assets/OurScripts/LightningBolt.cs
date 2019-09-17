@@ -11,26 +11,30 @@ public class LightningBolt : MonoBehaviour
     [HideInInspector] public GameObject end;
     [HideInInspector] public GameObject prefab;
     [SerializeField] int damage = 10;
-    OVRGrabber grabber;
-    bool holdingLightning = false;
-
+    [SerializeField] OVRGrabber grabberRight;
+    [SerializeField] OVRGrabber grabberLeft;
 
     private void OnEnable()
     {
-        grabber = GetComponent<OVRGrabber>();
         StartCoroutine(UpdateLightningPosition());
     }
 
     void Update()
     {
-        //every 10th frame, check if lightning has been grabbed.
+        //every 10th frame...
         if (Time.frameCount % 10 == 0)
-            holdingLightning = grabber.releasedLightning;
-        //if it has...
-        if (holdingLightning)
         {
-            grabber.releasedLightning = false;
-            StartCoroutine(LightningCoroutine());
+            //check if lightning has been released. If it has...
+            if (grabberRight.releasedLightning)
+            {
+                grabberRight.releasedLightning = false;
+                StartCoroutine(LightningCoroutine());
+            }
+            if (grabberLeft.releasedLightning)
+            {
+                grabberLeft.releasedLightning = false;
+                StartCoroutine(LightningCoroutine());
+            }
         }
     }
 
