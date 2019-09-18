@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     UnitHealth health;
     NavMeshAgent agent;
     GameObject village;
+    Vector3 spawnPosition;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
         village = GameObject.FindGameObjectWithTag("Village");
         health = GetComponent<UnitHealth>();
         animator = GetComponent<Animator>();
-        StartCoroutine("Navigation");
+        StartCoroutine(Navigation());
         agent.speed = speed;
     }
 
@@ -34,6 +35,11 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Dying());
         else
             animator.SetTrigger("Hit");
+    }
+
+    public void SetSpawnPosition(Vector3 position)
+    {
+        spawnPosition = position;
     }
 
     IEnumerator Navigation()
@@ -52,6 +58,19 @@ public class Enemy : MonoBehaviour
         SpawnManager.instance.EnemyDefeated();
         animator.SetBool("Death", true);
         yield return new WaitForSeconds(2);
+        SetPosition(spawnPosition);
         gameObject.SetActive(false);
+    }
+
+    public void Reset()
+    {
+        animator.SetBool("Death", false);
+        health.ResetHealth();
+        StartCoroutine(Navigation());
+    }
+
+    private void SetPosition(Vector3 position)
+    {
+        agent.Warp(position);
     }
 }

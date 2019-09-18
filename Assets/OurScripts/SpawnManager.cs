@@ -22,11 +22,9 @@ public class SpawnManager : MonoBehaviour
     #region Public variables
     public Wave[] waves;
     public Transform spawnPoint;
-    public Transform spiderParent;
-
     public Transform hierarchyPool;
 
-    public List<GameObject> pooledObjects;
+    public List<Enemy> pooledObjects;
     public GameObject objectToPool;
 
     public int amountToPool;
@@ -64,18 +62,19 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        pooledObjects = new List<GameObject>();
+        pooledObjects = new List<Enemy>();
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject obj = (GameObject)Instantiate(objectToPool);
-            obj.transform.parent = hierarchyPool;
+            GameObject obj = Instantiate(objectToPool, spawnPoint.position, Quaternion.identity, hierarchyPool);
             obj.SetActive(false);
-            pooledObjects.Add(obj);
+            pooledObjects.Add(obj.GetComponent<Enemy>());
+            pooledObjects[i].SetSpawnPosition(spawnPoint.position);
         }
 
         endWave = waves.Length - 1;
         text = FindObjectOfType<VillageTextController>();
+
+        StartNextWave();
     }
 
     void StartNextWave()
@@ -102,19 +101,19 @@ public class SpawnManager : MonoBehaviour
             if (currentWave >= endWave - 1)
             {
                 GameObject enemy = waves[currentWave].enemyPrefab;
-                Instantiate(enemy, spawnPoint.position, Quaternion.identity, spiderParent);
+                Instantiate(enemy, spawnPoint.position, Quaternion.identity, hierarchyPool);
             }
             else
             {
-                //Instantiate(enemy, spawnPoint.position, Quaternion.identity, spiderParent);
-                GameObject enemySpider = GetPooledObject();
+                Enemy enemySpider = GetPooledObject();
                 if (enemySpider != null)
                 {
-                    enemySpider.transform.position = spawnPoint.position;
-                    enemySpider.SetActive(true);
+                    enemySpider.gameObject.SetActive(true);
+                    yield return new WaitForFixedUpdate();
+                    enemySpider.Reset();
                 }
             }
-                yield return new WaitForSeconds(waves[currentWave].timeBetweenEnemies);
+            yield return new WaitForSeconds(waves[currentWave].timeBetweenEnemies);
         }
         currentWave++;
         yield return null;
@@ -138,11 +137,11 @@ public class SpawnManager : MonoBehaviour
         StartNextWave(); //Now the spawnmanager starts the spawning.
     }
 
-    public GameObject GetPooledObject()
+    public Enemy GetPooledObject()
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            if (!pooledObjects[i].gameObject.activeInHierarchy)
             {
                 return pooledObjects[i];
             }
