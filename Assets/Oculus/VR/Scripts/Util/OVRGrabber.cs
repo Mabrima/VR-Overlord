@@ -27,6 +27,10 @@ public class OVRGrabber : MonoBehaviour
     public float grabBegin = 0.55f;
     public float grabEnd = 0.35f;
 
+    // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
+    public bool releasedLightning = false;
+    // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
+
     // Demonstrates parenting the held object to the hand's transform when grabbed.
     // When false, the grabbed object is moved every FixedUpdate using MovePosition.
     // Note that MovePosition is required for proper physics simulation. If you set this to true, you can
@@ -253,6 +257,10 @@ public class OVRGrabber : MonoBehaviour
             {
                 OVRInput.SetControllerVibration(1, 0.2f, m_controller);
             }
+            else if (closestGrabbable.CompareTag("LightningBolt"))
+            {
+                OVRInput.SetControllerVibration(1, 0.1f, m_controller);
+            }
             else
             {
                 CreateVibration.singleton.CallVibration(0.05f, leftController, !leftController);
@@ -339,6 +347,11 @@ public class OVRGrabber : MonoBehaviour
             // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
             if (m_grabbedObj.CompareTag("FireBall"))
             {
+                OVRInput.SetControllerVibration(0, 0, m_controller);
+            }
+            if (m_grabbedObj.CompareTag("LightningBolt"))
+            {
+                releasedLightning = true;
                 OVRInput.SetControllerVibration(0, 0, m_controller);
             }
 

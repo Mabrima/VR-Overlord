@@ -10,28 +10,14 @@ public class LightningBolt : MonoBehaviour
 {
     [HideInInspector] public GameObject end;
     [SerializeField] int damage = 10;
-    Rigidbody rb;
+    OVRGrabber hand;
+    LightningBoltSpawner spawner;
 
     private void OnEnable()
     {
+        spawner = FindObjectOfType<LightningBoltSpawner>();
+        hand = FindObjectOfType<OVRGrabber>();
         StartCoroutine(UpdateLightningPosition());
-    }
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Terrain") || collision.transform.CompareTag("Enemy"))
-        {
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.useGravity = false;
-            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-            StartCoroutine(LightningStrike(collision));
-        }
-        else if (collision.transform.CompareTag("Floor"))
-            ReturnLightning();
     }
 
     //Sets lightning end position to the ground
@@ -39,32 +25,41 @@ public class LightningBolt : MonoBehaviour
     {
         do
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
                 end.transform.position = hit.point;
+
+            if (hand.releasedLightning && hit.transform != null && (hit.transform.CompareTag("Terrain") || hit.transform.CompareTag("Enemy")))
+            {
+                hand.releasedLightning = false;
+                spawner.StartCooldown();
+                StartCoroutine(LightningStrike(hit));
+            }
+            else if (hand.releasedLightning)
+            {
+                hand.releasedLightning = false;
+                ReturnLightning();
+            }
 
             yield return new WaitForSeconds(0.05f);
         } while (true);
     }
 
     //Start this coroutine when the player releases the lightning bolt
-    IEnumerator LightningStrike(Collision col)
+    IEnumerator LightningStrike(RaycastHit obj)
     {
         GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.3f;
-        col.transform.GetComponent<UnitHealth>()?.TakeDamage(damage);
+        obj.transform.GetComponent<UnitHealth>()?.TakeDamage(damage);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
 
         GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.02f;
-        rb.useGravity = true;
         gameObject.SetActive(false);
     }
 
     void ReturnLightning()
     {
-
         //code for returning lightning power to toolbox here
 
-        rb.velocity = new Vector3(0, 0, 0);
         gameObject.SetActive(false);
     }
 }
