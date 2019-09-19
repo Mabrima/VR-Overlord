@@ -9,7 +9,7 @@ using UnityEngine;
 public class UnitHealth : MonoBehaviour
 {
     [SerializeField] int startingHealth;
-    public int health;
+    [HideInInspector] public int health;
 
     void Start()
     {

@@ -43,6 +43,7 @@ public class SceneManage : MonoBehaviour
         }
         SpawnManager.instance.ResetWaves();
         village.ResetHealth();
+        
     }
 
     public void Quit()

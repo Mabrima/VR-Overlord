@@ -40,13 +40,14 @@ public class RockSpawner : MonoBehaviour
             pooledObjects.Add(obj);
         }
         //Testing
-        Reset();
+        //Reset();
     }
 
     public void Reset()
     {
         availableRocks = initialSpawn;
         text.text = "" + availableRocks;
+        ResetHierarchy();
         StartCoroutine(SpawnRocks());
     }
 
@@ -87,5 +88,13 @@ public class RockSpawner : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void ResetHierarchy()
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            pooledObjects[i].gameObject.SetActive(false);
+        }
     }
 }

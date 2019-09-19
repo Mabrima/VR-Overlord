@@ -74,7 +74,7 @@ public class SpawnManager : MonoBehaviour
         endWave = waves.Length - 1;
         text = FindObjectOfType<VillageTextController>();
 
-        StartNextWave();
+        //StartNextWave();
     }
 
     void StartNextWave()
@@ -94,7 +94,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        currentwaveText.text = "Current Wave: " + currentWave;
+        currentwaveText.text = "Current Wave: " + (currentWave + 1);
         while (spawnedEnemies < totalEnemiesInCurrentWave) //Spawn enemies while amount of enemies are under predetermined enemy amount.
         {
             spawnedEnemies++;
@@ -134,6 +134,7 @@ public class SpawnManager : MonoBehaviour
     public void ResetWaves()
     {
         currentWave = 0;
+        ResetHierarchy();
         StartNextWave(); //Now the spawnmanager starts the spawning.
     }
 
@@ -147,5 +148,13 @@ public class SpawnManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void ResetHierarchy()
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            pooledObjects[i].gameObject.SetActive(false);
+        }
     }
 }
