@@ -74,6 +74,7 @@ public class SpawnManager : MonoBehaviour
         endWave = waves.Length - 1;
         text = FindObjectOfType<VillageTextController>();
 
+        //Test
         //StartNextWave();
     }
 
@@ -135,7 +136,7 @@ public class SpawnManager : MonoBehaviour
     {
         currentWave = 0;
         ResetHierarchy();
-        StartNextWave(); //Now the spawnmanager starts the spawning.
+        StartNextWave();
     }
 
     public Enemy GetPooledObject()
