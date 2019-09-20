@@ -2826,6 +2826,16 @@ PrefabInstance:
       propertyPath: grabberRight
       value: 
       objectReference: {fileID: 231433633}
+    - target: {fileID: 8695714406790190520, guid: f9e91ec118b86d846943f36e4e0c1db0,
+        type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 231433633}
+    - target: {fileID: 8695714406790190520, guid: f9e91ec118b86d846943f36e4e0c1db0,
+        type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 231433627}
     - target: {fileID: 1350282000, guid: f9e91ec118b86d846943f36e4e0c1db0, type: 3}
       propertyPath: m_Enabled
       value: 1
