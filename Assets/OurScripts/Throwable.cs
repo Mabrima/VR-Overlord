@@ -9,21 +9,21 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     [SerializeField]
-    int health = 1;
-    [SerializeField]
     int damage = 1;
-
     bool removeRoutineRunning = false;
+
+    private void OnEnable()
+    {
+        removeRoutineRunning = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<UnitHealth>()?.TakeDamage(damage);
 
         if (other.CompareTag("Enemy"))
         {
-            health--;
-            if (health <= 0)
-                gameObject.SetActive(false);
+            other.GetComponent<UnitHealth>().TakeDamage(damage);
+            gameObject.SetActive(false);
         }
         else if (other.CompareTag("Terrain"))
         {
@@ -38,7 +38,7 @@ public class Throwable : MonoBehaviour
 
     IEnumerator RemoveAfterTime()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         gameObject.SetActive(false);
         yield return null;
     }
