@@ -39,25 +39,42 @@ public class FireBall : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        if (exploding)
+        {
+            Destroy(tempExplosion);
+            Destroy(tempFire);
+            Destroy(tempNMO);
+            colliderSphere.enabled = true;
+            exploding = false;
+        }
+    }
+
+    GameObject tempNMO;
+    GameObject tempExplosion;
+    GameObject tempFire;
+    SphereCollider colliderSphere;
+
     private IEnumerator Explode()
     {
-        SphereCollider colliderSphere = transform.parent.GetComponent<SphereCollider>();
+        colliderSphere = transform.parent.GetComponent<SphereCollider>();
         colliderSphere.enabled = false;
         exploding = true;
         explosionRadious.enabled = true;
         explosionRadious.enabled = false;
         yield return new WaitForSeconds(.1f);
-        GameObject tempNMO = Instantiate(navMeshObstacle, transform.position, Quaternion.identity);
-        GameObject tempExplosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        GameObject tempFire = Instantiate(fireEffect, transform.position, Quaternion.identity);
+        tempNMO = Instantiate(navMeshObstacle, transform.position, Quaternion.identity);
+        tempExplosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        tempFire = Instantiate(fireEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(1);
         Destroy(tempExplosion);
         yield return new WaitForSeconds(19);
         Destroy(tempFire);
         Destroy(tempNMO);
         colliderSphere.enabled = true;
-        exploding = false;
         transform.parent.gameObject.SetActive(false);
+        exploding = false;
         yield return null;
     }
 
