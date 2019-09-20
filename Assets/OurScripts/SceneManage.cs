@@ -45,7 +45,7 @@ public class SceneManage : MonoBehaviour
         }
         SpawnManager.instance.TurnOffAllSpawnedObjects();
         SpawnManager.instance.ResetWaves();
-        village.ResetHealth();
+        village.Reset();
         
     }
 

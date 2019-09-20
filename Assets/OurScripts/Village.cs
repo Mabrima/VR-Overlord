@@ -26,12 +26,16 @@ public class Village : MonoBehaviour
             other.GetComponent<UnitHealth>().TakeDamage(50);
 
             if (health.health <= 0)
+            {
                 text.GameOver();
+                SpawnManager.instance.TurnOffAllSpawnedObjects();
+            }
         }
     }
 
-    public void ResetHealth()
+    public void Reset()
     {
         health.ResetHealth();
+        text.ResetText();
     }
 }

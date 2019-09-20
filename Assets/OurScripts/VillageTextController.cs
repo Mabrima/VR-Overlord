@@ -6,6 +6,7 @@ public class VillageTextController : MonoBehaviour
 {
     public GameObject LoseText;
     public GameObject WinText;
+    bool haveLost = false;
 
     private void Start()
     {
@@ -14,18 +15,25 @@ public class VillageTextController : MonoBehaviour
 
     public void GameOver()
     {
+        WinText.SetActive(false);
         LoseText.SetActive(true);
+        haveLost = true;
     }
 
     public void YouWin()
     {
-        WinText.SetActive(true);
+        if (!haveLost)
+        {
+            LoseText.SetActive(false);
+            WinText.SetActive(true);
+        }
     }
 
     public void ResetText()
     {
         LoseText.SetActive(false);
         WinText.SetActive(false);
+        haveLost = false;
     }
 
 }
