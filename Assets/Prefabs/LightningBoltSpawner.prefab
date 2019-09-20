@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBoltPrefab: {fileID: 0}
+  number: {fileID: 4800403294170350062}
   cooldown: 0
 --- !u!212 &5597780496896202523
 SpriteRenderer:

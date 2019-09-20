@@ -5,11 +5,18 @@ using UnityEngine;
 public class LightningBoltSpawner : MonoBehaviour
 {
     [SerializeField] GameObject lightningBoltPrefab;
+    [SerializeField] TextMesh number;
     public float cooldown;
 
     public void StartCooldown()
     {
         StartCoroutine(Cooldown());
+    }
+
+    void Update()
+    {
+        if (cooldown > 0)
+            number.text = cooldown.ToString();
     }
 
     IEnumerator Cooldown()
