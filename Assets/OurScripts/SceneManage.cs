@@ -14,14 +14,15 @@ public class SceneManage : MonoBehaviour
 
     private void Start()
     {
-        village = FindObjectOfType<Village>();
-        rockSpawners = FindObjectsOfType<RockSpawner>();
-        game.SetActive(false);
-        menu.SetActive(true);
     }
 
     public void MenuScene()
     {
+        SpawnManager.instance.TurnOffAllSpawnedObjects();
+        foreach (RockSpawner rockSpawner in rockSpawners)
+        {
+            rockSpawner.TurnOffAllSpawnedObjects();
+        }
         menu.SetActive(true);
         game.SetActive(false);
     }
@@ -35,12 +36,14 @@ public class SceneManage : MonoBehaviour
 
     IEnumerator ResetGame()
     {
-        
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForFixedUpdate();
+
         foreach (RockSpawner rockSpawner in rockSpawners)
         {
             rockSpawner.Reset();
+            rockSpawner.TurnOffAllSpawnedObjects();
         }
+        SpawnManager.instance.TurnOffAllSpawnedObjects();
         SpawnManager.instance.ResetWaves();
         village.ResetHealth();
         

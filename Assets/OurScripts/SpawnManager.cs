@@ -135,7 +135,6 @@ public class SpawnManager : MonoBehaviour
     public void ResetWaves()
     {
         currentWave = 0;
-        ResetHierarchy();
         StartNextWave();
     }
 
@@ -151,7 +150,7 @@ public class SpawnManager : MonoBehaviour
         return null;
     }
 
-    private void ResetHierarchy()
+    public void TurnOffAllSpawnedObjects()
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {

@@ -47,7 +47,6 @@ public class RockSpawner : MonoBehaviour
     {
         availableRocks = initialSpawn;
         text.text = "" + availableRocks;
-        ResetHierarchy();
         StartCoroutine(SpawnRocks());
     }
 
@@ -90,7 +89,7 @@ public class RockSpawner : MonoBehaviour
         return null;
     }
 
-    private void ResetHierarchy()
+    public void TurnOffAllSpawnedObjects()
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
