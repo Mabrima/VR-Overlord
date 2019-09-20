@@ -10,13 +10,13 @@ public class LightningBolt : MonoBehaviour
 {
     [HideInInspector] public GameObject end;
     [SerializeField] int damage = 10;
-    OVRGrabber hand;
+    [SerializeField] OVRGrabber right;
+    [SerializeField] OVRGrabber left;
     LightningBoltSpawner spawner;
 
     private void OnEnable()
     {
         spawner = FindObjectOfType<LightningBoltSpawner>();
-        hand = FindObjectOfType<OVRGrabber>();
         StartCoroutine(UpdateLightningPosition());
     }
 
@@ -27,16 +27,24 @@ public class LightningBolt : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
                 end.transform.position = hit.point;
-
-            if (hand.releasedLightning && hit.transform != null && (hit.transform.CompareTag("Terrain") || hit.transform.CompareTag("Enemy")))
+            /*
+            if (left.releasedLightning)
             {
-                hand.releasedLightning = false;
+                left.releasedLightning = false;
+                right.releasedLightning = true;
+            }*/
+
+            if ((left.releasedLightning || right.releasedLightning) && hit.transform != null && (hit.transform.CompareTag("Terrain") || hit.transform.CompareTag("Enemy")))
+            {
+                left.releasedLightning = false;
+                right.releasedLightning = false;
                 spawner.StartCooldown();
                 StartCoroutine(LightningStrike(hit));
             }
-            else if (hand.releasedLightning)
+            else if (left.releasedLightning || right.releasedLightning)
             {
-                hand.releasedLightning = false;
+                left.releasedLightning = false;
+                right.releasedLightning = false;
                 ReturnLightning();
             }
 

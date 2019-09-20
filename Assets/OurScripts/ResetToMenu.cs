@@ -10,7 +10,7 @@ public class ResetToMenu : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "LeftControllerAnchor" || other.name == "RightControllerAnchor")
+        if (other.CompareTag("Controller"))
             sceneManager.MenuScene();
     }
 
