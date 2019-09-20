@@ -15,14 +15,14 @@ public class SoundScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         soundName = collision.gameObject.name;
-        wichSound(soundName);
+        WhichSound(soundName);
     }
 
-    public void wichSound(string soundName)
+    public void WhichSound(string soundName)
     {
         switch (soundName)
         {
-            case "Ball Touchdown adio":
+            case "Ball Touchdown audio":
                 if (!ballAudio.isPlaying)
                     ballAudio.Play();
                 break;
