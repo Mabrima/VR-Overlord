@@ -16,7 +16,7 @@ public class LightningBoltSpawner : MonoBehaviour
     void Update()
     {
         if (cooldown > 0)
-            number.text = ((int)cooldown).ToString();
+            number.text = Mathf.Round(cooldown).ToString();
     }
 
     IEnumerator Cooldown()
