@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
 
     #region Public variables
     public Wave[] waves;
-    public Transform spawnPoint;
+    public Transform[] spawnPoint;
     public Transform hierarchyPool;
 
     public List<Enemy> pooledObjects;
@@ -65,17 +65,18 @@ public class SpawnManager : MonoBehaviour
         pooledObjects = new List<Enemy>();
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject obj = Instantiate(objectToPool, spawnPoint.position, Quaternion.identity, hierarchyPool);
+            GameObject obj = Instantiate(objectToPool, spawnPoint[0].position, Quaternion.identity, hierarchyPool);
             obj.SetActive(false);
             pooledObjects.Add(obj.GetComponent<Enemy>());
-            pooledObjects[i].SetSpawnPosition(spawnPoint.position);
+            pooledObjects[i].SetSpawnPosition(spawnPoint[0].position);
         }
 
         endWave = waves.Length - 1;
         text = FindObjectOfType<VillageTextController>();
 
-        //Test
+        //test
         //StartNextWave();
+
     }
 
     void StartNextWave()
@@ -98,18 +99,35 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnEnemies()
     {
         currentwaveText.text = "Current Wave: " + (currentWave + 1);
+        int spawnLocation = 0;
         while (spawnedEnemies < totalEnemiesInCurrentWave) //Spawn enemies while amount of enemies are under predetermined enemy amount.
         {
             spawnedEnemies++;
             if (currentWave >= endWave - 1)
             {
                 GameObject enemy = waves[currentWave].enemyPrefab;
-                boss = Instantiate(enemy, spawnPoint.position, Quaternion.identity, hierarchyPool);
+                boss = Instantiate(enemy, spawnPoint[0].position, Quaternion.identity, hierarchyPool);
             }
             else
             {
                 Enemy enemySpider = GetPooledObject();
-                SkinnedMeshRenderer rend = GetComponentInChildren<SkinnedMeshRenderer>();
+                
+                if (currentWave == 1)
+                {
+                    spawnLocation = spawnLocation == 0 ? 1 : 0;
+                    enemySpider.SetSpawnPosition(spawnPoint[spawnLocation].position);
+                }
+                if (currentWave >= 2)
+                {
+                    if (spawnLocation == 2)
+                        spawnLocation = 0;
+                    else
+                        spawnLocation++;
+
+                    enemySpider.SetSpawnPosition(spawnPoint[spawnLocation].position);
+                }
+                
+                SkinnedMeshRenderer rend = enemySpider.GetComponentInChildren<SkinnedMeshRenderer>();
                 if (enemySpider != null)
                 {
                     rend.enabled = false;

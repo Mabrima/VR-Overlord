@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   end: {fileID: 8695714405697344446}
-  damage: 10
+  damage: 15
   right: {fileID: 0}
   left: {fileID: 0}
 --- !u!1001 &8695714405697244946
