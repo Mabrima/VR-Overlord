@@ -109,11 +109,14 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 Enemy enemySpider = GetPooledObject();
+                SkinnedMeshRenderer rend = GetComponentInChildren<SkinnedMeshRenderer>();
                 if (enemySpider != null)
                 {
+                    rend.enabled = false;
                     enemySpider.gameObject.SetActive(true);
                     yield return new WaitForFixedUpdate();
                     enemySpider.Reset();
+                    rend.enabled = true;
                 }
             }
             yield return new WaitForSeconds(waves[currentWave].timeBetweenEnemies);
@@ -125,7 +128,7 @@ public class SpawnManager : MonoBehaviour
     public void EnemyDefeated() //Call this whenever an enemy dies.
     {
         enemiesLeftInWave--;
-        
+
         //if there are no enemies left in the wave, start the next wave.
         if (enemiesLeftInWave == 0)
         {
