@@ -12,6 +12,7 @@ public class Throwable : MonoBehaviour
     int damage = 1;
     bool removeRoutineRunning = false;
 
+    //On enable make make sure the bool for removal is set to false
     private void OnEnable()
     {
         removeRoutineRunning = false;
@@ -20,12 +21,14 @@ public class Throwable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
+        //If it connects with an enemy deal damage and dissapear.
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<UnitHealth>().TakeDamage(damage);
             gameObject.SetActive(false);
         }
-        else if (other.CompareTag("Terrain"))
+        //if it connects with terrain or the floor, start the coroutine to remove it after a short while.
+        else if (other.CompareTag("Terrain") || other.CompareTag("Floor"))
         {
             if (!removeRoutineRunning)
             {
@@ -36,6 +39,7 @@ public class Throwable : MonoBehaviour
 
     }
 
+    //Removes the rock from the scene after a short duration.
     IEnumerator RemoveAfterTime()
     {
         yield return new WaitForSeconds(10);
