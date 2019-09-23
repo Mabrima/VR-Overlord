@@ -28,17 +28,20 @@ public class FireBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if not already exploding and hits terrain or enemy start the Explode coroutine.
-        if (!exploding && (other.tag == "Enemy" || other.tag == "Terrain"))
+        if (!exploding && (other.CompareTag("Enemy") || other.CompareTag("Terrain")))
         {
             StartCoroutine(Explode());
             return;
+        }
+        else if (other.CompareTag("Floor"))
+        {
+            transform.parent.gameObject.SetActive(false);
         }
         //if exploding and it has a health script deal damage.
         else
         {
             other.GetComponent<UnitHealth>()?.TakeDamage(damage);
         }
-
     }
 
     //On disable (level reset mainly) make sure to clean up behind you first, and reset to be ready to be used again.
