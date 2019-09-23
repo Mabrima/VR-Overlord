@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
-  damage: 0
+  damage: 5
 --- !u!195 &-178977660043485240
 NavMeshAgent:
   m_ObjectHideFlags: 0
