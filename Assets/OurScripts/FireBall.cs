@@ -33,7 +33,7 @@ public class FireBall : MonoBehaviour
             StartCoroutine(Explode());
             return;
         }
-        else if (other.CompareTag("Floor"))
+        else if (!exploding && other.CompareTag("Floor"))
         {
             transform.parent.gameObject.SetActive(false);
         }
