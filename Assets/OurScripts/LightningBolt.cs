@@ -27,12 +27,6 @@ public class LightningBolt : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
                 end.transform.position = hit.point;
-            /*
-            if (left.releasedLightning)
-            {
-                left.releasedLightning = false;
-                right.releasedLightning = true;
-            }*/
 
             if ((left.releasedLightning || right.releasedLightning) && hit.transform != null && (hit.transform.CompareTag("Terrain") || hit.transform.CompareTag("Enemy")))
             {
