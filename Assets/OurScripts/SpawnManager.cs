@@ -93,6 +93,8 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
+    GameObject boss;
+
     IEnumerator SpawnEnemies()
     {
         currentwaveText.text = "Current Wave: " + (currentWave + 1);
@@ -102,7 +104,7 @@ public class SpawnManager : MonoBehaviour
             if (currentWave >= endWave - 1)
             {
                 GameObject enemy = waves[currentWave].enemyPrefab;
-                Instantiate(enemy, spawnPoint.position, Quaternion.identity, hierarchyPool);
+                boss = Instantiate(enemy, spawnPoint.position, Quaternion.identity, hierarchyPool);
             }
             else
             {
@@ -129,11 +131,12 @@ public class SpawnManager : MonoBehaviour
         {
             StartNextWave();
         }
-
     }
 
     public void ResetWaves()
     {
+        if (boss != null)
+            Destroy(boss);
         currentWave = 0;
         StopAllCoroutines();
         StartNextWave();
