@@ -135,6 +135,7 @@ public class SpawnManager : MonoBehaviour
     public void ResetWaves()
     {
         currentWave = 0;
+        StopAllCoroutines();
         StartNextWave();
     }
 
