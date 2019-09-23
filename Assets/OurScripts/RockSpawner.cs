@@ -43,6 +43,7 @@ public class RockSpawner : MonoBehaviour
         //Reset();
     }
 
+    //Resets and starts making rocks.
     public void Reset()
     {
         availableRocks = initialSpawn;
@@ -50,6 +51,7 @@ public class RockSpawner : MonoBehaviour
         StartCoroutine(SpawnRocks());
     }
 
+    //Adds to the amount of rocks you may use and updates the numbers.
     private IEnumerator SpawnRocks()
     {
         while (spawning)
@@ -61,6 +63,7 @@ public class RockSpawner : MonoBehaviour
         yield return null;
     }
 
+    //When you touch the button spawn a rock if there are rocks available.
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Controller") && availableRocks > 0)
@@ -77,6 +80,7 @@ public class RockSpawner : MonoBehaviour
         }
     }
 
+    //Returns an inactive object in the pool.
     public GameObject GetPooledObject()
     {
         for (int i = 0; i < pooledObjects.Count; i++)
@@ -89,6 +93,7 @@ public class RockSpawner : MonoBehaviour
         return null;
     }
 
+    //Turns off all objects in the pool
     public void TurnOffAllSpawnedObjects()
     {
         for (int i = 0; i < pooledObjects.Count; i++)

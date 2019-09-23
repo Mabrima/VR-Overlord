@@ -27,11 +27,13 @@ public class FireBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if not already exploding and hits terrain or enemy start the Explode coroutine.
         if (!exploding && (other.tag == "Enemy" || other.tag == "Terrain"))
         {
             StartCoroutine(Explode());
             return;
         }
+        //if exploding and it has a health script deal damage.
         else
         {
             other.GetComponent<UnitHealth>()?.TakeDamage(damage);
@@ -39,6 +41,7 @@ public class FireBall : MonoBehaviour
 
     }
 
+    //On disable (level reset mainly) make sure to clean up behind you first, and reset to be ready to be used again.
     private void OnDisable()
     {
         if (exploding)
@@ -56,25 +59,32 @@ public class FireBall : MonoBehaviour
     GameObject tempFire;
     SphereCollider colliderSphere;
 
+    //Does everything that needs to be done during an explosion.
     private IEnumerator Explode()
     {
+        //Bool to keep track of which state we are in.
+        exploding = true;
+        //Makes it keep falling through so it "dissapears"
         colliderSphere = transform.parent.GetComponent<SphereCollider>();
         colliderSphere.enabled = false;
-        exploding = true;
+        //Catches everything in it's explosion radious to be handled.
         explosionRadious.enabled = true;
         explosionRadious.enabled = false;
-        yield return new WaitForSeconds(.1f);
+        //Spawn everything that needs to be seen/used to make the explosion
         tempNMO = Instantiate(navMeshObstacle, transform.position, Quaternion.identity);
         tempExplosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         tempFire = Instantiate(fireEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(1);
+        //After a short while remove the explosion effect.
         Destroy(tempExplosion);
         yield return new WaitForSeconds(19);
+        //At the end remove the fire effect and the navmeshblocker.
         Destroy(tempFire);
         Destroy(tempNMO);
+        //reset and remove the object.
         colliderSphere.enabled = true;
-        transform.parent.gameObject.SetActive(false);
         exploding = false;
+        transform.parent.gameObject.SetActive(false);
         yield return null;
     }
 
