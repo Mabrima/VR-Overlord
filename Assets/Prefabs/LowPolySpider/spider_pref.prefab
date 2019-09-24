@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: -7318582253387522299}
   - component: {fileID: 1775496795}
   - component: {fileID: 3202395476920033831}
-  - component: {fileID: 2221640002936254856}
+  - component: {fileID: 2632762737400471330}
   m_Layer: 0
   m_Name: spider_pref
   m_TagString: Enemy
@@ -1167,19 +1167,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   health: 3
---- !u!135 &2221640002936254856
-SphereCollider:
+--- !u!136 &2632762737400471330
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715103906888602}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.11
-  m_Center: {x: 0, y: 0.08, z: 0.01}
+  m_Radius: 0.12
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.06, z: 0}
 --- !u!1 &1719841372004032
 GameObject:
   m_ObjectHideFlags: 0

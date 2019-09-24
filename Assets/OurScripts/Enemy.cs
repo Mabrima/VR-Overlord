@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     Animator animator;
     UnitHealth health;
     NavMeshAgent agent;
-    SphereCollider collider;
+    CapsuleCollider collider;
     GameObject village;
     bool dying = false;
     Vector3 spawnPosition;
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<UnitHealth>();
         animator = GetComponent<Animator>();
-        collider = GetComponent<SphereCollider>();
+        collider = GetComponent<CapsuleCollider>();
         agent.speed = speed;
         village = GameObject.FindGameObjectWithTag("Village");
         StartCoroutine(Navigation());
