@@ -17,6 +17,10 @@ permissions and limitations under the License.
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Altered slightly by us. Code parts at lines 35, 260, 350
+ * 
+ */
+
 /// <summary>
 /// Allows grabbing and throwing of objects with the OVRGrabbable component on them.
 /// </summary>

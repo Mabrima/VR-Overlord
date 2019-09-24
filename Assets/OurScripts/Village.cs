@@ -11,11 +11,13 @@ public class Village : MonoBehaviour
 {
     UnitHealth health;
     VillageTextController text;
+    [SerializeField] Slider slider;
 
     private void Start()
     {
         health = GetComponent<UnitHealth>();
         text = GetComponent<VillageTextController>();
+        slider.maxValue = health.GetStartingHealth();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,12 +25,13 @@ public class Village : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             health.TakeDamage(other.GetComponent<Enemy>().damage);
+            slider.value = health.GetStartingHealth() - health.health;
             other.GetComponent<UnitHealth>().TakeDamage(50);
 
             if (health.health <= 0)
             {
                 text.GameOver();
-                SpawnManager.instance.TurnOffAllSpawnedObjects();
+                SpawnManager.instance.OnLose();
             }
         }
     }

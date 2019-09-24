@@ -3,6 +3,9 @@ using UnityEngine;
 
 /* Script Author: Philip Åkerblom
  * Edits by: Johan Appelgren, Robin Arkblad
+ * 
+ * Not an actual scenemanager as changing scenes turn out to crash the game every time, instead chosen to merely activate different "scenes" 
+ * by making empty objects holding everything that a scene should contain and turning them on and off.
  */
 
 public class SceneManage : MonoBehaviour

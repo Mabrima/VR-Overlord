@@ -182,4 +182,12 @@ public class SpawnManager : MonoBehaviour
             pooledObjects[i].gameObject.SetActive(false);
         }
     }
+
+    public void OnLose()
+    {
+        if (boss != null)
+            Destroy(boss);
+        TurnOffAllSpawnedObjects();
+        StopAllCoroutines();
+    }
 }

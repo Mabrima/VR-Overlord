@@ -31,4 +31,9 @@ public class UnitHealth : MonoBehaviour
     {
         health = startingHealth;
     }
+
+    public int GetStartingHealth()
+    {
+        return startingHealth;
+    }
 }
