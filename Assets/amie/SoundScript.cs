@@ -1,36 +1,46 @@
 ﻿using UnityEngine;
 
-///Amie Faily
+/* Script Author: Amie Faily
+ * Edits by: Johan Appelgren
+ */
 
 public class SoundScript : MonoBehaviour
 {
-    AudioSource ballAudio;
-    string soundName;
+    [SerializeField] AudioClip[] sounds;
+    OVRGrabber hand;
+    AudioSource source;
 
     void Start()
     {
-        ballAudio = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void Update()
     {
-        soundName = collision.gameObject.name;
-        WhichSound(soundName);
-    }
-
-    public void WhichSound(string soundName)
-    {
-        switch (soundName)
+        if (hand != null && hand.grabbedFire)
         {
-            case "Ball Touchdown audio":
-                if (!ballAudio.isPlaying)
-                    ballAudio.Play();
-                break;
+            hand.grabbedFire = false;
+            PlayHeldSound();
+        }
+    }
 
-            default:
-                if (!ballAudio.isPlaying)
-                    ballAudio.Play();
-                break;
+    public void PlayHeldSound()
+    {
+        source.Stop();
+        source.loop = true;
+        source.clip = sounds[0];
+        source.Play();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<OVRGrabber>())
+            hand = other.GetComponent<OVRGrabber>();
+        else if (other.CompareTag("Enemy") || other.CompareTag("Terrain"))
+        {
+            source.loop = false;
+            source.clip = sounds[1];
+            source.Play();
         }
     }
 }

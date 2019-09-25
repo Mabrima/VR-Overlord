@@ -32,6 +32,8 @@ public class OVRGrabber : MonoBehaviour
     public float grabEnd = 0.35f;
 
     // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
+    public bool grabbedFire = false;
+    public bool grabbedLightning = false;
     public bool releasedLightning = false;
     // ---------------------------------------------------------- Our code -------------------------------------------------------------------------------------
 
@@ -259,10 +261,12 @@ public class OVRGrabber : MonoBehaviour
             bool leftController = m_controller == OVRInput.Controller.LTouch;
             if (closestGrabbable.CompareTag("FireBall"))
             {
+                grabbedFire = true;
                 OVRInput.SetControllerVibration(1, 0.2f, m_controller);
             }
             else if (closestGrabbable.CompareTag("LightningBolt"))
             {
+                grabbedLightning = true;
                 OVRInput.SetControllerVibration(1, 0.1f, m_controller);
             }
             else

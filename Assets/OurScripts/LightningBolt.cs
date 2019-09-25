@@ -9,6 +9,8 @@ using UnityEngine;
 public class LightningBolt : MonoBehaviour
 {
     [HideInInspector] public GameObject end;
+    [SerializeField] AudioClip[] sounds;
+    AudioSource source;
     [SerializeField] int damage = 10;
     [SerializeField] OVRGrabber right;
     [SerializeField] OVRGrabber left;
@@ -16,8 +18,18 @@ public class LightningBolt : MonoBehaviour
 
     private void OnEnable()
     {
+        GetComponentInChildren<LineRenderer>().enabled = true;
+        source = GetComponent<AudioSource>();
         spawner = FindObjectOfType<LightningBoltSpawner>();
         StartCoroutine(UpdateLightningPosition());
+    }
+
+    public void PlayHeldSound()
+    {
+        source.Stop();
+        source.loop = true;
+        source.clip = sounds[0];
+        source.Play();
     }
 
     //Sets lightning end position to the ground
@@ -25,6 +37,17 @@ public class LightningBolt : MonoBehaviour
     {
         do
         {
+            if (right.grabbedLightning)
+            {
+                right.grabbedLightning = false;
+                PlayHeldSound();
+            }
+            if (left.grabbedLightning)
+            {
+                left.grabbedLightning = false;
+                PlayHeldSound();
+            }
+
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
                 end.transform.position = hit.point;
 
@@ -49,12 +72,19 @@ public class LightningBolt : MonoBehaviour
     //Start this coroutine when the player releases the lightning bolt
     IEnumerator LightningStrike(RaycastHit obj)
     {
+        source.loop = false;
+        source.clip = sounds[1];
+        source.Play();
+
         GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.3f;
         obj.transform.GetComponent<UnitHealth>()?.TakeDamage(damage);
 
         yield return new WaitForSeconds(0.75f);
 
+        GetComponentInChildren<LineRenderer>().enabled = false;
         GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.02f;
+
+        yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
 
