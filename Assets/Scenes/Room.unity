@@ -7008,7 +7008,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -2.135, y: -0.000000029802322}
   m_SizeDelta: {x: 4.27, y: 0.2645}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7127,7 +7127,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 995955921}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &965068624
 TerrainCollider:
@@ -7541,7 +7541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &995955921
 Transform:
   m_ObjectHideFlags: 0
@@ -7554,8 +7554,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1221503678}
-  - {fileID: 503442192}
   - {fileID: 965068623}
+  - {fileID: 503442192}
   - {fileID: 70898322}
   - {fileID: 205629355}
   - {fileID: 1380378094}
@@ -15231,8 +15231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rock: {fileID: 1160818345351242363, guid: c9be31f7b681a2b4f9c1d421a25a7f9b, type: 3}
-  timeBetweenRocks: 20
-  initialSpawn: 2
+  timeBetweenRocks: 30
+  initialSpawn: 0
   text: {fileID: 1206288157}
   hierarchyPool: {fileID: 354410695}
   pooledObjects: []

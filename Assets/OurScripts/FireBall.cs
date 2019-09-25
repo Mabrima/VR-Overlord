@@ -72,6 +72,7 @@ public class FireBall : MonoBehaviour
         colliderSphere.enabled = false;
         //Catches everything in it's explosion radious to be handled.
         explosionRadious.enabled = true;
+        yield return new WaitForFixedUpdate();
         explosionRadious.enabled = false;
         //Spawn everything that needs to be seen/used to make the explosion
         tempNMO = Instantiate(navMeshObstacle, transform.position, Quaternion.identity);
