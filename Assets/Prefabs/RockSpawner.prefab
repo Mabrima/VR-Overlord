@@ -44,5 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rock: {fileID: 567791629143270046, guid: 7351bf71e2d18604ba41a40aa8ec0b5c, type: 3}
-  timeBetweenRocks: 5
-  initialSpawn: 5
+  timeBetweenRocks: 4
+  initialSpawn: 6
+  text: {fileID: 0}
+  hierarchyPool: {fileID: 0}
+  pooledObjects: []
+  objectToPool: {fileID: 0}
+  amountToPool: 0
+  spawning: 1
