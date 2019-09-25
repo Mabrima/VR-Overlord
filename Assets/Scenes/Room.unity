@@ -1586,6 +1586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabBegin: 0.55
   grabEnd: 0.35
+  grabbedFire: 0
+  grabbedLightning: 0
   releasedLightning: 0
   m_parentHeldObject: 1
   m_gripTransform: {fileID: 231433620}
@@ -1665,6 +1667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabBegin: 0.55
   grabEnd: 0.35
+  grabbedFire: 0
+  grabbedLightning: 0
   releasedLightning: 0
   m_parentHeldObject: 1
   m_gripTransform: {fileID: 231433623}
