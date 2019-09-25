@@ -28,7 +28,7 @@ public class LightningBoltSpawner : MonoBehaviour
             cooldown = cooldown <= 0 ? 0 : cooldown;
             yield return new WaitForSeconds(Time.deltaTime);
         } while (cooldown > 0);
-        //do something to make it obvious that it can be used again
+        number.text = "Ready!";
     }
 
     void OnTriggerEnter(Collider other)
