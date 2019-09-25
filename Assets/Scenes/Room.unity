@@ -5211,7 +5211,7 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
@@ -5284,7 +5284,8 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[3].enemyPrefab
       value: 
-      objectReference: {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 3}
+      objectReference: {fileID: 1715103906888602, guid: 33b828b8f1c31334988de54e3fe47ee6,
+        type: 3}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[4].enemiesPerWave
@@ -5294,8 +5295,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[4].enemyPrefab
       value: 
-      objectReference: {fileID: 1715103906888602, guid: 33b828b8f1c31334988de54e3fe47ee6,
-        type: 3}
+      objectReference: {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 3}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[0].enemyPrefab
@@ -5330,12 +5330,12 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[2].timeBetweenEnemies
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[3].timeBetweenEnemies
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
@@ -5350,17 +5350,17 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[3].enemiesInWave
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[2].enemiesInWave
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[1].enemiesInWave
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
@@ -5370,7 +5370,7 @@ PrefabInstance:
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: waves.Array.data[4].enemiesInWave
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
@@ -5467,12 +5467,18 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1463763897}
+      objectReference: {fileID: 463799721}
     - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
         type: 3}
       propertyPath: spawnPoints.Array.data[2]
       value: 
-      objectReference: {fileID: 463799721}
+      objectReference: {fileID: 1463763897}
+    - target: {fileID: 5723183736614187311, guid: e8fafdc34ba468a46a911f0712957953,
+        type: 3}
+      propertyPath: waves.Array.data[5].enemyPrefab
+      value: 
+      objectReference: {fileID: 1715103906888602, guid: 33b828b8f1c31334988de54e3fe47ee6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fafdc34ba468a46a911f0712957953, type: 3}
 --- !u!4 &660838764 stripped
@@ -14818,8 +14824,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 2.33, y: 0, z: 1.55}
+  m_Radius: 0.35
+  m_Center: {x: 2.3, y: 0, z: 1.55}
 --- !u!1001 &1952781489
 PrefabInstance:
   m_ObjectHideFlags: 0
