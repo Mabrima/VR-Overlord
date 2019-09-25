@@ -3274,6 +3274,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightningBolt
       objectReference: {fileID: 0}
+    - target: {fileID: 8695714406790190523, guid: f9e91ec118b86d846943f36e4e0c1db0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8695714406790190521, guid: f9e91ec118b86d846943f36e4e0c1db0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3339,6 +3344,16 @@ PrefabInstance:
       propertyPath: left
       value: 
       objectReference: {fileID: 231433627}
+    - target: {fileID: 300309097784297246, guid: f9e91ec118b86d846943f36e4e0c1db0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429213118423220973, guid: f9e91ec118b86d846943f36e4e0c1db0,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e91ec118b86d846943f36e4e0c1db0, type: 3}
 --- !u!4 &503442192 stripped
@@ -12239,6 +12254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517621643102121504, guid: 686ba3478d4e11d498cba9c2e83cde61,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 686ba3478d4e11d498cba9c2e83cde61, type: 3}

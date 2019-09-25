@@ -18,10 +18,14 @@ public class LightningBolt : MonoBehaviour
 
     private void OnEnable()
     {
+        GetComponent<MeshRenderer>().enabled = true;
         GetComponentInChildren<LineRenderer>().enabled = true;
+        StartCoroutine(UpdateLightningPosition());
+    }
+    void Start()
+    {
         source = GetComponent<AudioSource>();
         spawner = FindObjectOfType<LightningBoltSpawner>();
-        StartCoroutine(UpdateLightningPosition());
     }
 
     public void PlayHeldSound()
@@ -81,6 +85,7 @@ public class LightningBolt : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f);
 
+        GetComponent<MeshRenderer>().enabled = false;
         GetComponentInChildren<LineRenderer>().enabled = false;
         GetComponentInChildren<LightningBoltScript>().ChaosFactor = 0.02f;
 
