@@ -34,7 +34,7 @@ public class SoundScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<OVRGrabber>())
+        if (other.GetComponentInParent<OVRGrabber>())
             hand = other.GetComponent<OVRGrabber>();
         else if (other.CompareTag("Enemy") || other.CompareTag("Terrain"))
         {
