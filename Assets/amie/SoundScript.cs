@@ -28,6 +28,7 @@ public class SoundScript : MonoBehaviour
     {
         source.Stop();
         source.loop = true;
+        source.spatialBlend = 1;
         source.clip = sounds[0];
         source.Play();
     }
@@ -39,6 +40,7 @@ public class SoundScript : MonoBehaviour
         else if (other.CompareTag("Enemy") || other.CompareTag("Terrain"))
         {
             source.loop = false;
+            source.spatialBlend = 0;
             source.clip = sounds[1];
             source.Play();
         }
