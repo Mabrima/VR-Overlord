@@ -38,9 +38,9 @@ public class FireBall : MonoBehaviour
             transform.parent.gameObject.SetActive(false);
         }
         //if exploding and it has a health script deal damage.
-        else
+        else if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<UnitHealth>()?.TakeDamage(damage);
+            other.GetComponent<UnitHealth>().TakeDamage(damage);
         }
     }
 

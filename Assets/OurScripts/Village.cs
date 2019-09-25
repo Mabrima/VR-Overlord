@@ -39,6 +39,7 @@ public class Village : MonoBehaviour
     public void Reset()
     {
         health.ResetHealth();
+        slider.value = 0;
         text.ResetText();
     }
 }

@@ -8,7 +8,7 @@ public class Bouncer : MonoBehaviour
     {
         if (other.CompareTag("FireBall"))
         {
-            other.GetComponent<Rigidbody>().velocity = -other.GetComponent<Rigidbody>().velocity/4;
+            other.GetComponent<Rigidbody>().velocity = -other.GetComponent<Rigidbody>().velocity/2;
         }
     }
 }
