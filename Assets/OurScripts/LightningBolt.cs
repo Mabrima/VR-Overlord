@@ -52,7 +52,7 @@ public class LightningBolt : MonoBehaviour
                 PlayHeldSound();
             }
 
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
+            if (Physics.SphereCast(transform.position, 0.1f, transform.forward, out RaycastHit hit, 4))
                 end.transform.position = hit.point;
 
             if ((left.releasedLightning || right.releasedLightning) && hit.transform != null && (hit.transform.CompareTag("Terrain") || hit.transform.CompareTag("Enemy")))

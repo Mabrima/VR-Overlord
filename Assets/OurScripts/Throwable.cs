@@ -25,7 +25,6 @@ public class Throwable : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<UnitHealth>().TakeDamage(damage);
-            gameObject.SetActive(false);
         }
         //if it connects with terrain or the floor, start the coroutine to remove it after a short while.
         else if (other.CompareTag("Terrain") || other.CompareTag("Floor"))
