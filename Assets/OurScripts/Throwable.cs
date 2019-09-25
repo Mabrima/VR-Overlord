@@ -42,7 +42,7 @@ public class Throwable : MonoBehaviour
     //Removes the rock from the scene after a short duration.
     IEnumerator RemoveAfterTime()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
         yield return null;
     }
