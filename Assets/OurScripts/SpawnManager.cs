@@ -78,7 +78,7 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    void StartNextWave()
+    public void StartNextWave()
     {
         if (currentWave >= endWave)
         {
@@ -163,7 +163,6 @@ public class SpawnManager : MonoBehaviour
             Destroy(boss);
         currentWave = 0;
         StopAllCoroutines();
-        StartNextWave();
     }
 
     public Enemy GetPooledObject()
