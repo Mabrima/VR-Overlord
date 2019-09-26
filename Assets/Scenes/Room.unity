@@ -1252,6 +1252,18 @@ Transform:
   m_Father: {fileID: 995955921}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &212034650 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 783905157824470618, guid: 697c03ccb5110a149b3d5b096cc80be3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2143159234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0925a4b2ebfd6634193f1b69bbd134c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &212274464
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,6 +7071,7 @@ MonoBehaviour:
   rockSpawners:
   - {fileID: 1146820523}
   - {fileID: 1972758029}
+  lightningboltSpawner: {fileID: 212034650}
   startButton: {fileID: 1199726791}
 --- !u!4 &862114037
 Transform:
@@ -12624,7 +12637,7 @@ PrefabInstance:
     - target: {fileID: 8517621643102121504, guid: 686ba3478d4e11d498cba9c2e83cde61,
         type: 3}
       propertyPath: sounds.Array.data[0].volume
-      value: 0.1
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 686ba3478d4e11d498cba9c2e83cde61, type: 3}

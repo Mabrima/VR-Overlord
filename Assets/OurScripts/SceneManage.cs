@@ -50,9 +50,9 @@ public class SceneManage : MonoBehaviour
         }
         SpawnManager.instance.TurnOffAllSpawnedObjects();
         SpawnManager.instance.ResetWaves();
-        lightningboltSpawner.cooldown = 0;
         village.Reset();
         startButton.SetActive(true);
+        lightningboltSpawner.cooldown = 0;
     }
 
     public void StartGame()
