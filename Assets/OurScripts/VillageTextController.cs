@@ -6,10 +6,12 @@ public class VillageTextController : MonoBehaviour
 {
     public GameObject LoseText;
     public GameObject WinText;
+    AudioManager music;
     bool haveLost = false;
 
     private void Start()
     {
+        music = FindObjectOfType<AudioManager>();
         ResetText();
     }
 
@@ -22,6 +24,7 @@ public class VillageTextController : MonoBehaviour
 
     public void YouWin()
     {
+        music.Play("Victory");
         if (!haveLost)
         {
             LoseText.SetActive(false);
