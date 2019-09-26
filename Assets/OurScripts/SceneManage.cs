@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 /* Script Author: Philip Åkerblom
  * Edits by: Johan Appelgren, Robin Arkblad
@@ -14,14 +16,12 @@ public class SceneManage : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] Village village;
     [SerializeField] RockSpawner[] rockSpawners;
-
-    private void Start()
-    {
-    }
+    [SerializeField] GameObject startButton;
 
     public void MenuScene()
     {
         SpawnManager.instance.TurnOffAllSpawnedObjects();
+        startButton.SetActive(true);
         foreach (RockSpawner rockSpawner in rockSpawners)
         {
             rockSpawner.TurnOffAllSpawnedObjects();
@@ -45,11 +45,25 @@ public class SceneManage : MonoBehaviour
         {
             rockSpawner.Reset();
             rockSpawner.TurnOffAllSpawnedObjects();
+            rockSpawner.StartSpawning();
         }
         SpawnManager.instance.TurnOffAllSpawnedObjects();
         SpawnManager.instance.ResetWaves();
         village.Reset();
-        
+        startButton.SetActive(true);
+    }
+
+    public void StartGame()
+    {
+        foreach (RockSpawner rockSpawner in rockSpawners)
+        {
+            rockSpawner.Reset();
+            rockSpawner.TurnOffAllSpawnedObjects();
+            rockSpawner.StartSpawning();
+        }
+
+        SpawnManager.instance.StartNextWave();
+        startButton.SetActive(false);
     }
 
     public void Quit()
