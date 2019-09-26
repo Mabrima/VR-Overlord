@@ -14,10 +14,7 @@ public class SceneManage : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] Village village;
     [SerializeField] RockSpawner[] rockSpawners;
-
-    private void Start()
-    {
-    }
+    [SerializeField] LightningBoltSpawner lightningboltSpawner;
 
     public void MenuScene()
     {
@@ -48,8 +45,8 @@ public class SceneManage : MonoBehaviour
         }
         SpawnManager.instance.TurnOffAllSpawnedObjects();
         SpawnManager.instance.ResetWaves();
+        lightningboltSpawner.cooldown = 0;
         village.Reset();
-        
     }
 
     public void Quit()

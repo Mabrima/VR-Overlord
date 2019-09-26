@@ -7,24 +7,9 @@
 public class SoundScript : MonoBehaviour
 {
     [SerializeField] AudioClip[] sounds;
-    OVRGrabber hand;
     AudioSource source;
 
-    void Start()
-    {
-        source = GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
-        if (hand != null && hand.grabbedFire)
-        {
-            hand.grabbedFire = false;
-            PlayHeldSound();
-        }
-    }
-
-    public void PlayHeldSound()
+    void OnEnable()
     {
         source.Stop();
         source.loop = true;
@@ -33,11 +18,14 @@ public class SoundScript : MonoBehaviour
         source.Play();
     }
 
+    void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponentInParent<OVRGrabber>())
-            hand = other.GetComponentInParent<OVRGrabber>();
-        else if (other.CompareTag("Enemy") || other.CompareTag("Terrain"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Terrain"))
         {
             source.loop = false;
             source.spatialBlend = 0;
