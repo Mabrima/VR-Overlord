@@ -53,6 +53,8 @@ public class SceneManage : MonoBehaviour
         village.Reset();
         startButton.SetActive(true);
         lightningboltSpawner.cooldown = 0;
+        if (!AudioManager.instance.source.loop)
+            AudioManager.instance.GameMusic();
     }
 
     public void StartGame()

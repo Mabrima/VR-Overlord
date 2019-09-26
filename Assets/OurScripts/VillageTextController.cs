@@ -24,11 +24,11 @@ public class VillageTextController : MonoBehaviour
 
     public void YouWin()
     {
-        music.Play("Victory");
         if (!haveLost)
         {
             LoseText.SetActive(false);
             WinText.SetActive(true);
+            music.Victory();
         }
     }
 

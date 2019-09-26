@@ -2,11 +2,11 @@
 using UnityEngine;
 using System;
 
-public class AudioManager: MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
 
-    public Sound[] sounds;
-
+    public AudioClip[] sounds;
+    public AudioSource source;
     public static AudioManager instance;
 
     public void Awake()
@@ -23,22 +23,41 @@ public class AudioManager: MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        source = GetComponent<AudioSource>();
+        /*
         foreach (Sound s in sounds)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
+            s.source = audioSource;
             s.source.clip = s.clip;
-
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        */
     }
 
     public void Start()
     {
-        Play("Music");
+        GameMusic();
     }
 
+    public void GameMusic()
+    {
+        source.Stop();
+        source.clip = sounds[0];
+        source.volume = 0.3f;
+        source.loop = true;
+        source.Play();
+    }
+    public void Victory()
+    {
+        source.clip = sounds[1];
+        source.volume = 1;
+        source.loop = false;
+        source.Play();
+    }
+
+    /*
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -47,6 +66,7 @@ public class AudioManager: MonoBehaviour
             return;
         }
 
-        s.source.Play();
+        source.Play();
     }
+    */
 }
