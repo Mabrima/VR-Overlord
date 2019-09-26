@@ -48,6 +48,7 @@ public class RockSpawner : MonoBehaviour
     {
         availableRocks = initialSpawn;
         text.text = "" + availableRocks;
+        StopAllCoroutines();
     }
 
     public void StartSpawning()
