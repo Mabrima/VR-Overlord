@@ -99,6 +99,7 @@ public class SpawnManager : MonoBehaviour
     {
         currentwaveText.text = "Current Wave: " + (currentWave + 1);
         int spawnLocation = 0;
+        yield return new WaitForSeconds(3);
         while (spawnedEnemies < totalEnemiesInCurrentWave) //Spawn enemies while amount of enemies are under predetermined enemy amount.
         {
             spawnedEnemies++;
